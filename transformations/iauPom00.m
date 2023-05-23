@@ -60,4 +60,3 @@ rpom = eye(3);
 rpom = iauRz(sp, rpom);
 rpom = iauRy(-xp, rpom);
 rpom = iauRx(-yp, rpom);
-

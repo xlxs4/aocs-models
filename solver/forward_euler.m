@@ -6,4 +6,3 @@ q = normalize(q);
 
 w = w0 + h * acceleration(I, w0, torque(q0, w0));
 end
-

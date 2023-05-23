@@ -1,7 +1,7 @@
 function Y = ECI2ECEF(MJD_UTC, Y0, eopdata, astro_constants) %#codegen
 
 [x_pole, y_pole, UT1_UTC, LOD, TAI_UTC] = IERS(eopdata, MJD_UTC, astro_constants);
-TT_UTC  = 32.184+TAI_UTC;
+TT_UTC = 32.184 + TAI_UTC;
 MJD_UT1 = MJD_UTC + UT1_UTC / 86400;
 MJD_TT = MJD_UTC + TT_UTC / 86400;
 

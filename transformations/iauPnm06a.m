@@ -75,5 +75,4 @@ dpsi = dp + dp * (0.4697e-6 + fj2);
 deps = de + de * fj2;
 
 % Equinox based nutation x precession x bias matrix.
-rbpn = iauFw2m(gamb, phib, psib + dpsi, epsa + deps);
-
+rbpn = iauFw2m(gamb, phib, psib+dpsi, epsa+deps);

@@ -71,7 +71,7 @@ else
     d1 = dj2;
     d2 = dj1;
 end
-t = d1 + (d2- astro_constants.DJ00);
+t = d1 + (d2 - astro_constants.DJ00);
 
 % Fractional part of T (days).
 f = rem(d1, 1.0) + rem(d2, 1.0);

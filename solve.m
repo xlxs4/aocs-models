@@ -17,9 +17,9 @@ I3 = 0.5;
 I = diag([I1, I2, I3]);
 
 for i = 2:iter
-[qnext, wnext] = runge_kutta4(@torque, dt, I, q(:, i - 1), w(:, i - 1));
-q(:, i) = qnext;
-w(:, i) = wnext;
+    [qnext, wnext] = runge_kutta4(@torque, dt, I, q(:, i-1), w(:, i-1));
+    q(:, i) = qnext;
+    w(:, i) = wnext;
 end
 
 % quat_animate(q, dt);

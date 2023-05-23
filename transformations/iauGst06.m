@@ -73,8 +73,8 @@
 function gst = iauGst06(uta, utb, tta, ttb, rnpb, astro_constants)
 
 % Extract CIP coordinates.
-x = rnpb(3,1);
-y = rnpb(3,2);
+x = rnpb(3, 1);
+y = rnpb(3, 2);
 
 % The CIO locator, s.
 s = iauS06(tta, ttb, x, y, astro_constants);
