@@ -194,7 +194,7 @@ s4 = [
 t = ((date1 - astro_constants.DJ00) + date2) / astro_constants.DJC;
 
 % Fundamental Arguments (from IERS Conventions 2003)
-
+fa = zeros(8,1);
 % Mean anomaly of the Moon.
 fa(1) = rem(            485868.249036 +...
     t * ( 1717915923.2178 +...
