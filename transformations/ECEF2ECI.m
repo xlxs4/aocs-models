@@ -19,7 +19,6 @@ Pi = iauPom00(x_pole, y_pole, iauSp00(t, astro_constants));
 S = zeros(3);
 S(1, 2) = 1;
 S(2, 1) = -1; % Derivative of Earth rotation
-% Omega  = 7292115.8553e-11+4.3e-15*( (MJD_UTC-astro_constants.MJD_J2000)/36525 ); % [rad/s]
 Omega = astro_constants.omega_Earth - 0.843994809 * 1e-9 * LOD; % IERS
 dTheta = Omega * S * Theta; % matrix [1/s]
 U = Pi * Theta * NPB; % ICRS to ITRS transformation
