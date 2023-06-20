@@ -1,0 +1,9 @@
+name = "NeuralFMU"
+uuid = "06fa7af5-c870-481a-a25c-8b51d94a0ec5"
+authors = ["xlxs4 "]
+version = "0.1.0"
+
+[deps]
+FMI = "14a09403-18e3-468f-ad8a-74f8dda2d9ac"
+FMIFlux = "fabad875-0d53-4e47-9446-963b74cae21f"
+Flux = "587475ba-b771-5e3f-ad9e-33799f191a9c"
