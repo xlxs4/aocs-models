@@ -35,7 +35,8 @@ gnuplot \
 libreadline-dev \
 libncurses-dev \
 libxt-dev \ 
-freeglut3-dev
+freeglut3-dev \
+bc
 
 # Qt4 was deprecated in Ubuntu Focal, replaced with Qt5.
 RUN add-apt-repository ppa:rock-core/qt4 && \
