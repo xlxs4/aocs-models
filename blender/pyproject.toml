@@ -8,6 +8,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "3.10.*"
+pillow = "^9.5.0"
+numpy = "^1.25.0"
+matplotlib = "^3.7.1"
 
 [tool.poetry.group.dev.dependencies]
 yapf = "^0.40.1"
