@@ -1,0 +1,15 @@
+# .editorconfig
+root = true
+
+[*]
+# Unix-style line endings
+end_of_line = lf
+
+# Use spaces for indentation
+indent_style = space
+
+# Indent size of 4 spaces
+indent_size = 4
+
+# Ensure there's a newline at the end of the file
+insert_final_newline = true
