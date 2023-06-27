@@ -6,58 +6,66 @@ import tempfile
 from math import radians
 import matplotlib.pyplot as plot
 
-# Specify the path to your .blend file
-filepath = "model.blend"
+def get_cross_section(quaternion):
+    # Specify the path to your .blend file
+    filepath = "model.blend"
 
-# Load the .blend file
-bpy.ops.wm.open_mainfile(filepath=filepath)
+    pixels_per_m2 =  509953.9170506912
 
-# Specify the rotation angles in degrees
-rotation_angles = (45, 30, 0)  # rotation in X, Y, Z directions
+    # Load the .blend file
+    bpy.ops.wm.open_mainfile(filepath=filepath)
 
-# Convert the rotation angles to radians (Blender uses radians for rotation)
-rotation_angles_rad = [radians(angle) for angle in rotation_angles]
+    # Specify the rotation angles in degrees
+    # rotation_angles = (0, 0, 0)  # rotation in X, Y, Z directions
 
-bpy.data.objects["PeakSat v2"].rotation_euler = rotation_angles_rad
+    # Convert the rotation angles to radians (Blender uses radians for rotation)
+    # rotation_angles_rad = [radians(angle) for angle in rotation_angles]
 
-# Specify the output path for the rendered image
-bpy.context.scene.render.filepath = "render.png"
+    bpy.data.objects["PeakSat v2"].rotation_quaternion = list(quaternion)
 
-# Set output format to PNG
-bpy.context.scene.render.image_settings.file_format = 'PNG'
+    # Specify the output path for the rendered image
+    bpy.context.scene.render.filepath = "render.png"
 
-# Specify render resolution
-bpy.context.scene.render.resolution_x = 400
-bpy.context.scene.render.resolution_y = 400
+    # Set output format to PNG
+    bpy.context.scene.render.image_settings.file_format = 'PNG'
 
-# Render the scene
-bpy.ops.render.render(write_still=True)
+    # Specify render resolution
+    bpy.context.scene.render.resolution_x = 400
+    bpy.context.scene.render.resolution_y = 400
 
-# Create a temporary file
-fd, path = tempfile.mkstemp(suffix=".png")
+    # Render the scene
+    bpy.ops.render.render(write_still=True)
 
-try:
-    # Save the rendered image to the temporary file
-    bpy.data.images['Render Result'].save_render(filepath=path)
+    # Create a temporary file
+    fd, path = tempfile.mkstemp(suffix=".png")
 
-    # Open the image file
-    img = Image.open(path)
+    try:
+        # Save the rendered image to the temporary file
+        bpy.data.images['Render Result'].save_render(filepath=path)
 
-    # Convert the image data to a numpy array
-    pixels_array = np.array(img)
+        # Open the image file
+        img = Image.open(path)
 
-    # Binarize the image using a threshold of 0.5
-    pixels_array_bin = pixels_array > 100
+        # Convert the image data to a numpy array
+        pixels_array = np.array(img)
 
-    plot.imshow(pixels_array_bin)
-    plot.show()
+        # Binarize the image using a threshold of 0.5
+        pixels_array_bin = pixels_array > 100
 
-    # Count the white pixels (pixels over threshold)
-    white_pixels = np.sum(pixels_array_bin)
+        # plot.imshow(pixels_array_bin)
+        # plot.show()
 
-    print('Number of white pixels:', white_pixels)
+        # Count the white pixels (pixels over threshold)
+        white_pixels = np.sum(pixels_array_bin)
+        cross_sectional_area = white_pixels / pixels_per_m2
 
-finally:
-    # Clean up the temporary file
-    os.close(fd)
-    os.remove(path)
+        # print('Number of white pixels:', white_pixels)
+        print('Cross-sectional area:', cross_sectional_area, "m2")
+        
+
+    finally:
+        # Clean up the temporary file
+        os.close(fd)
+        os.remove(path)
+
+    return cross_sectional_area
