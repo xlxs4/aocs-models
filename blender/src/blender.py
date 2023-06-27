@@ -3,13 +3,11 @@ import numpy as np
 from PIL import Image
 import os
 import tempfile
-from math import radians
-import matplotlib.pyplot as plot
 
 
 def get_cross_section(quaternion):
     # Specify the path to your .blend file
-    filepath = "model.blend"
+    filepath = "../model/model.blend"
 
     pixels_per_m2 = 509953.9170506912
 
