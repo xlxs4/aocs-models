@@ -6,11 +6,12 @@ import tempfile
 from math import radians
 import matplotlib.pyplot as plot
 
+
 def get_cross_section(quaternion):
     # Specify the path to your .blend file
     filepath = "model.blend"
 
-    pixels_per_m2 =  509953.9170506912
+    pixels_per_m2 = 509953.9170506912
 
     # Load the .blend file
     bpy.ops.wm.open_mainfile(filepath=filepath)
@@ -61,7 +62,6 @@ def get_cross_section(quaternion):
 
         # print('Number of white pixels:', white_pixels)
         print('Cross-sectional area:', cross_sectional_area, "m2")
-        
 
     finally:
         # Clean up the temporary file

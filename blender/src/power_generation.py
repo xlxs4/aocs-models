@@ -11,8 +11,6 @@ from astropy.constants import Constant
 from astropy import units as u
 
 
-
-
 def eclipse_function(k, u_, r_sec, R_sec, R_primary, umbra=True):
     """Calculates a continuous shadow function.
 
@@ -54,13 +52,9 @@ def eclipse_function(k, u_, r_sec, R_sec, R_primary, umbra=True):
 
     cos_psi = beta * np.cos(nu) + zeta * np.sin(nu)
     shadow_function = (
-        ((R_primary**2) * (1 + ecc * np.cos(nu)) ** 2)
-        + (p**2) * (cos_psi**2)
-        - p**2
-        + pm
-        * (2 * p * R_primary * cos_psi)
-        * (1 + ecc * np.cos(nu))
-        * sin_delta_shadow
+        ((R_primary**2) * (1 + ecc * np.cos(nu))**2) + (p**2) * (cos_psi**2) -
+        p**2 + pm * (2 * p * R_primary * cos_psi) *
+        (1 + ecc * np.cos(nu)) * sin_delta_shadow
     )
 
     return shadow_function
@@ -130,7 +124,7 @@ def rv2coe(k, r, v, tol=1e-8):
             nu = E_to_nu(np.arctan2(e_se, e_ce), ecc)
         else:
             e_sh = (r @ v) / sqrt(-ka)
-            e_ch = norm(r) * (norm(v) ** 2) / k - 1
+            e_ch = norm(r) * (norm(v)**2) / k - 1
             nu = F_to_nu(np.log((e_ch + e_sh) / (e_ch - e_sh)) / 2, ecc)
 
         raan = np.arctan2(n[1], n[0]) % (2 * np.pi)
@@ -141,6 +135,7 @@ def rv2coe(k, r, v, tol=1e-8):
     nu = (nu + np.pi) % (2 * np.pi) - np.pi
 
     return p, ecc, inc, raan, argp, nu
+
 
 def E_to_nu(E, ecc):
     r"""True anomaly from eccentric anomaly.
@@ -163,6 +158,7 @@ def E_to_nu(E, ecc):
     nu = 2 * np.arctan(np.sqrt((1 + ecc) / (1 - ecc)) * np.tan(E / 2))
     return nu
 
+
 def F_to_nu(F, ecc):
     r"""True anomaly from hyperbolic anomaly.
 
@@ -182,12 +178,14 @@ def F_to_nu(F, ecc):
     nu = 2 * np.arctan(np.sqrt((ecc + 1) / (ecc - 1)) * np.tanh(F / 2))
     return nu
 
+
 def coe_rotation_matrix(inc, raan, argp):
     """Create a rotation matrix for coe transformation."""
     r = rotation_matrix(raan, 2)
     r = r @ rotation_matrix(inc, 0)
     r = r @ rotation_matrix(argp, 2)
     return r
+
 
 def rotation_matrix(angle, axis):
     assert axis in (0, 1, 2)
@@ -204,6 +202,7 @@ def rotation_matrix(angle, axis):
     R[..., a2, a1] = s
     R[..., a2, a2] = c
     return R
+
 
 GM_EARTH = Constant(
     "GM_earth",
@@ -253,16 +252,18 @@ sun_position = planets['sun'].at(t)
 sun_position_eci = ICRF(sun_position.position.au, t=t)
 
 # Display position
-sun_eci = sun_position_eci.position.km / np.linalg.norm(sun_position_eci.position.km)
+sun_eci = sun_position_eci.position.km / np.linalg.norm(
+    sun_position_eci.position.km
+)
 
 # position_eci = [1,1,1]
-q_eci2body = [Quaternion([1,0,0,0])]
+q_eci2body = [Quaternion([1, 0, 0, 0])]
 sun_body = q_eci2body[0].rotate(sun_eci)
-q_body2sun = rotation_quaternion_from_vectors(sun_body, [1,0,0])
+q_body2sun = rotation_quaternion_from_vectors(sun_body, [1, 0, 0])
 
 cross_section = get_cross_section(q_body2sun)
 
-r, v = (np.array([1,1,1]), np.array([0.5,1,-0.5]))
+r, v = (np.array([1, 1, 1]), np.array([0.5, 1, -0.5]))
 
 eclipse = eclipse_function(k, np.hstack((r, v)), sun_eci, R_sec, R_pri)
 print(eclipse)
