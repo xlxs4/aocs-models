@@ -11,6 +11,10 @@ python = "3.10.*"
 pillow = "^9.5.0"
 numpy = "^1.25.0"
 matplotlib = "^3.7.1"
+scipy = "^1.10.1"
+pyquaternion = "^0.9.9"
+skyfield = "^1.46"
+astropy = "^5.3"
 
 [tool.poetry.group.dev.dependencies]
 yapf = "^0.40.1"
