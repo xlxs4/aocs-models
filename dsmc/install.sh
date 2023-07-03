@@ -1,148 +1,97 @@
 #!/bin/bash
 
-nProcs=1
-if [ $# -ne 0 ]
-then
-    nProcs=$1
-fi
-
-tref_CFD=1200
-tref_DSMC=1380
-tref_PICDSMC=310
-
-speedup=1.0
-if [[ $nProcs -eq 2 || $nProcs -eq 3 ]]
-then
-    speedup=1.5
-elif [ "$nProcs" -ge 4 ]; then
-    speedup=2.0
-fi
-
-display_bar() {
-    local w=20 p=$1; shift
-    local pct=$(( p*w/100 ))
-    printf -v arrows "%*s" "$pct" ""; arrows=${arrows// />};
-    printf "\r\e[K[%-*s] %3d%% %s" "$w" "$arrows" "$p" "$*"; 
+# Function to get current date-time stamp
+get_date_time() {
+    date "+%Y-%m-%d %H:%M:%S"
 }
 
+# Define logging functions
+log_info() {
+    echo "$(get_date_time) INFO: $1"
+}
+
+log_error() {
+    echo "$(get_date_time) ERROR: $1"
+}
+
+numProcessors=1
+if [ $# -ne 0 ]
+then
+    if ! [[ "$1" =~ ^[0-9]+$ ]]
+    then
+        log_error "The number of processors must be an integer."
+        exit 1
+    fi
+    numProcessors=$1
+fi
+
+referenceTime_CFD=1200
+referenceTime_DSMC=1380
+referenceTime_PICDSMC=310
+
+speedupFactor=1.0
+if [[ $numProcessors -eq 2 || $numProcessors -eq 3 ]]
+then
+    speedupFactor=1.5
+elif [ "$numProcessors" -ge 4 ]; then
+    speedupFactor=2.0
+fi
+
+# Function to display progress bar
+display_bar() {
+    local barWidth=20 progress=$1; shift
+    local percent=$(( progress*barWidth/100 ))
+    printf -v arrows "%*s" "$percent" ""; arrows=${arrows// />};
+    printf "\r\e[K[%-*s] %3d%% %s" "$barWidth" "$arrows" "$progress" "$*"; 
+}
+progressRate=100 # Adjust this for faster or slower progress rate
+
+# Function to simulate progress bar based on the sleep time
 progress_bar() {
-    local slp=$1;
-    for x in {1..99}
+    local sleepTime=$1
+    local increment=$((100 / progressRate))
+    for ((i=increment; i<=100; i+=increment))
     do
-        display_bar "$x" "$2"
-        sleep "$slp"
+        display_bar "$i" "$2"
+        sleep "$sleepTime"
     done
 }
 
-print_status() {
-    local logfile="$1"
-    local last_line
-    last_line=$( tail -n 2 "$logfile" )
-    if [[ "$last_line" == *"successfully"* ]]; then
-       echo -e "\nSUCCESS";
-    else
-       echo -e "\nFAIL: check $logfile";
-    fi
+module_handler() {
+    local referenceTime=$1
+    local commandBase=$2
+    local logFileBase=$3
+    local messageBase=$4
+    for action in install resync
+    do
+        local sleepPeriod
+        sleepPeriod=$(bc -l <<< "$referenceTime/$speedupFactor/$progressRate")
+        progress_bar "$sleepPeriod" "$action $messageBase" &
+        local currentDateTime
+        currentDateTime=$(date '+%Y%m%d%H%M%S')
+        ./build/"$action-$commandBase".sh "$numProcessors" > "$logFileBase-$action-$currentDateTime" 2>&1 
+        local exit_status=$?
+        wait %2
+        if [ -n "$(jobs -p)" ]
+        then
+          disown
+          pkill -P $$  > /dev/null 2>&1
+        fi
+        display_bar "100" "$action $messageBase"
+        if [ "$exit_status" -eq 0 ]; then
+            log_info "$action $messageBase SUCCESS with exit status: $exit_status"
+        else
+            log_error "$action $messageBase FAILED with exit status: $exit_status. Check $logFileBase-$action-$currentDateTime"
+        fi
+    done
 }
 
-install_CFD() {
-    local sleep_period
-    sleep_period=$(bc -l <<< $tref_CFD/$speedup/100)
-    progress_bar "$sleep_period" "installing CFD module" &
-    ./build/install-CFD.sh "$nProcs" > logInstall-CFD 2>&1 &
-    wait %2
-    if [ -n "$(jobs -p)" ]
-    then
-      disown
-      pkill -P $$  > /dev/null 2>&1
-    fi
-    display_bar "100" "installed CFD module"
-    print_status logInstall-CFD
+install_and_sync_modules() {
+    module_handler "$referenceTime_CFD" "CFD" "logCFD" "CFD module"
+    wait -n
+    module_handler "$referenceTime_DSMC" "DSMC" "logDSMC" "DSMC module"
+    wait -n
+    module_handler "$referenceTime_PICDSMC" "hybridPICDSMC" "logHybridPICDSMC" "hybrid PIC-DSMC module"
 }
 
-sync_CFD() {
-    local sleep_period
-    sleep_period=$(bc -l <<< $tref_CFD/$speedup/100)
-    progress_bar "$sleep_period" "syncing CFD module" &
-    ./build/resync-CFD.sh "$nProcs" > logSync-CFD 2>&1 &
-    wait %2
-    if [ -n "$(jobs -p)" ]
-    then
-      disown
-      pkill -P $$  > /dev/null 2>&1
-    fi
-    display_bar "100" "synced CFD module"
-    print_status logSync-CFD
-}
-
-install_DSMC() {
-    local sleep_period
-    sleep_period=$(bc -l <<< $tref_DSMC/$speedup/100)
-    progress_bar "$sleep_period" "installing DSMC module" &
-    ./build/install-DSMC.sh "$nProcs" > logInstall-DSMC 2>&1 &
-    wait %2
-    if [ -n "$(jobs -p)" ]
-    then
-      disown
-      pkill -P $$  > /dev/null 2>&1
-    fi
-    display_bar "100" "installed DSMC module"
-    print_status logInstall-DSMC
-}
-
-sync_DSMC() {
-    local sleep_period
-    sleep_period=$(bc -l <<< $tref_DSMC/$speedup/100)
-    progress_bar "$sleep_period" "syncing DSMC module" &
-    ./build/resync-DSMC.sh "$nProcs" > logSync-DSMC 2>&1 &
-    wait %2
-    if [ -n "$(jobs -p)" ]
-    then
-      disown
-      pkill -P $$  > /dev/null 2>&1
-    fi
-    display_bar "100" "synced DSMC module"
-    print_status logSync-DSMC
-}
-
-install_PICDSMC() {
-    local sleep_period
-    sleep_period=$(bc -l <<< $tref_PICDSMC/$speedup/100)
-    progress_bar "$sleep_period" "installing hybrid PIC-DSMC module" &
-    ./build/install-hybridPICDSMC.sh "$nProcs" > logInstall-hybridPICDSMC 2>&1 &
-    wait %2
-    if [ -n "$(jobs -p)" ]
-    then
-      disown
-      pkill -P $$  > /dev/null 2>&1
-    fi
-    display_bar "100" "installed hybrid PIC-DSMC module"
-    print_status logInstall-hybridPICDSMC
-}
-
-sync_PICDSMC() {
-    local sleep_period
-    sleep_period=$(bc -l <<< $tref_PICDSMC/$speedup/100)
-    progress_bar "$sleep_period" "syncing hybrid PIC-DSMC module" &
-    ./build/resync-hybridPICDSMC.sh "$nProcs" > logSync-hybridPICDSMC 2>&1 &
-    wait %2
-    if [ -n "$(jobs -p)" ]
-    then
-      disown
-      pkill -P $$  > /dev/null 2>&1
-    fi
-    display_bar "100" "synced hybrid PIC-DSMC module"
-    print_status logSync-hybridPICDSMC
-}
-
-echo "-----  INSTALLATION  -----"
-echo "All modules:"
-echo "1 - CFD module"
-echo "2 - DSMC module"
-echo "3 - Hybrid PIC-DSMC module"
-
-install_CFD
-wait -n
-install_DSMC
-wait -n
-install_PICDSMC
+install_and_sync_modules
