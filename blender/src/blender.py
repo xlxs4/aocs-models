@@ -1,11 +1,9 @@
 import bpy
 import numpy as np
-from PIL import Image
 
 
 def get_cross_section(quaternion):
-    # FIXME
-    pixels_per_m2 = 509953.9170506912
+    pixels_per_m2 = 347047.61904761905
 
     bpy.data.objects["PeakSat v2"].rotation_mode = 'QUATERNION'
     bpy.data.objects["PeakSat v2"].rotation_quaternion = tuple(quaternion)
@@ -36,7 +34,7 @@ def get_cross_section(quaternion):
 
     # copy buffer to numpy array for faster manipulation
     arr = np.array(bpy.data.images['Viewer Node'].pixels)
-    image = arr.reshape(400, 400, 4)
+    image = arr.reshape(bpy.context.scene.render.resolution_x, bpy.context.scene.render.resolution_y, 4)
     image = np.dot(image[..., :3], [0.299, 0.587, 0.114])
 
     # Binarize the image using a threshold of 0.5

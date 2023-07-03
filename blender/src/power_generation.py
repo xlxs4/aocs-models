@@ -17,9 +17,10 @@ from skyfield.positionlib import ICRF
 from utils import rotation_quaternion_from_vectors
 
 from astro import eclipse_function, GM_EARTH, R_EARTH, R_SUN
+import parse
 
-SOLAR_PANEL_EFFICIENCY = 0.2
-PERFORMANCE_RATIO = 0.75
+SOLAR_PANEL_EFFICIENCY = 0.285 # 0.2
+PERFORMANCE_RATIO = 1 # 0.75
 
 
 def generate_power(q_eci2body, t_jd, r, v):
@@ -45,14 +46,15 @@ def generate_power(q_eci2body, t_jd, r, v):
 
     eclipse = eclipse_function(k, np.hstack((r, v)), sun_eci, R_sec, R_pri)
 
-    if eclipse <= 0:
+    if eclipse >= 0:
         return 0
     else:
         sun_body = q_eci2body.rotate(sun_eci)
         q_body2sun = rotation_quaternion_from_vectors(sun_body, [1, 0, 0])
         cross_section = get_cross_section(q_body2sun)
-        sun_constant = get_sun_constant(t_jd)
-        return cross_section * sun_constant * SOLAR_PANEL_EFFICIENCY * PERFORMANCE_RATIO
+        # sun_constant = get_sun_constant(t_jd)
+        # return cross_section * sun_constant * SOLAR_PANEL_EFFICIENCY * PERFORMANCE_RATIO
+        return cross_section
 
 
 def get_sun_constant(julian_date):
@@ -109,21 +111,45 @@ def main():
     # Generating data
     SIZE = 100
     STEP = 100
-    seq_q_eci2body, seq_t_jd, seq_r, seq_v = generate_data(SIZE, STEP)
+    # seq_q_eci2body, seq_t_jd, seq_r, seq_v = generate_data(SIZE, STEP)
+    seq_t_jd, seq_q_eci2body, areas, powers, seq_r, seq_v = parse.parse_data()
 
     # Specify the path to your .blend file
     filepath = "../model/model.blend"
-
-    pixels_per_m2 = 509953.9170506912
 
     # Load the .blend file
     bpy.ops.wm.open_mainfile(filepath=filepath)
 
     seq_power = list()
+    index = 0
     for q_eci2body, t_jd, r, v in zip(seq_q_eci2body, seq_t_jd, seq_r, seq_v):
+        index = index + 1
         seq_power.append(generate_power(q_eci2body, t_jd, r, v))
-    print(seq_power)
+    
+    with open('our_area', 'w') as file:
+        file.write(str(seq_power))
 
 
 if __name__ == "__main__":
     main()
+
+import matplotlib.pyplot as plt
+import ast
+def rr():
+    with open('our_area', 'r') as file:
+        seq_power_str = file.read()
+    
+    return seq_power_str
+
+seq_power = ast.literal_eval(rr())
+
+import parse
+_, _, p, _, _, _ = parse.parse_data()
+
+plt.plot(p, label='p')
+plt.plot(seq_power, label='seq_power')
+plt.title('Two lists on the same plot')
+plt.xlabel('Index')
+plt.ylabel('Value')
+plt.legend()
+plt.show()
