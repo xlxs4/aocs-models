@@ -1,155 +1,154 @@
 import math
-
-import bpy
-
-import numpy as np
-
+from typing import List
+from dataclasses import dataclass
 from astropy.time import Time
-from astropy import units as u
-
-from blender import get_cross_section
-
-from pyquaternion import Quaternion
-
+import bpy
+import numpy as np
 from skyfield.api import load
 from skyfield.positionlib import ICRF
-
 from utils import rotation_quaternion_from_vectors
-
-from astro import eclipse_function, GM_EARTH, R_EARTH, R_SUN
+from blender import get_cross_section
 import parse
-
-SOLAR_PANEL_EFFICIENCY = 0.285 # 0.2
-PERFORMANCE_RATIO = 1 # 0.75
-
-
-def generate_power(q_eci2body, t_jd, r, v):
-    k = GM_EARTH.to_value(u.km**3 / u.s**2)
-    R_sec = R_SUN.to_value(u.km)
-    R_pri = R_EARTH.to_value(u.km)
-
-    # Load ephemeris from NASA JPL
-    ts = load.timescale()
-    planets = load('de421.bsp')
-
-    t = ts.tt_jd(t_jd)
-
-    # Get the position of the sun at the current time in the Geocentric frame
-    sun_position = planets['sun'].at(t)
-
-    # To convert this position to the ECI frame, we convert it to an ICRF object
-    sun_position_eci = ICRF(sun_position.position.au, t=t)
-
-    sun_eci = sun_position_eci.position.km / np.linalg.norm(
-        sun_position_eci.position.km
-    )
-
-    eclipse = eclipse_function(k, np.hstack((r, v)), sun_eci, R_sec, R_pri)
-
-    if eclipse >= 0:
-        return 0
-    else:
-        sun_body = q_eci2body.rotate(sun_eci)
-        q_body2sun = rotation_quaternion_from_vectors(sun_body, [1, 0, 0])
-        cross_section = get_cross_section(q_body2sun)
-        # sun_constant = get_sun_constant(t_jd)
-        # return cross_section * sun_constant * SOLAR_PANEL_EFFICIENCY * PERFORMANCE_RATIO
-        return cross_section
+import matplotlib.pyplot as plt
+import itertools
 
 
-def get_sun_constant(julian_date):
-    # Constants for maximum and minimum sun radiation
-    max_sun_constant = 1413.0
-    min_sun_constant = 1322.0
+@dataclass
+class Config:
+    solar_panel_efficiency: float = 0.285
+    performance_ratio: float = 1
+    max_sun_constant: float = 1413.0
+    min_sun_constant: float = 1322.0
+    filepath: str = "../model/model.blend"
+    stations_url: str = 'http://celestrak.org/NORAD/elements/stations.txt'
+    output_file: str = 'our_power'
 
-    # Calculate the amplitude and the mean value
-    amplitude = (max_sun_constant - min_sun_constant) / 2.0
-    mean_value = (max_sun_constant + min_sun_constant) / 2.0
 
-    # Convert the Julian date to a datetime object
+config = Config()
+
+
+def generate_power(
+    q_eci2body: np.ndarray, sun_position_eci_km: np.ndarray, sun_constant: float
+) -> float:
+    sun_eci = sun_position_eci_km / np.linalg.norm(sun_position_eci_km)
+    sun_body = q_eci2body.rotate(sun_eci)
+    q_body2sun = rotation_quaternion_from_vectors(sun_body, [0, -1, 0])
+    cross_section = get_cross_section(q_body2sun)
+    return cross_section * sun_constant * config.solar_panel_efficiency * config.performance_ratio
+
+
+def get_sun_constant(julian_date: float) -> float:
+    amplitude = (config.max_sun_constant - config.min_sun_constant) / 2.0
+    mean_value = (config.max_sun_constant + config.min_sun_constant) / 2.0
+
     date = Time(julian_date, format='jd').datetime
-
-    # Get the day of the year
     day_of_year = date.timetuple().tm_yday
-
-    # Adjusted cosine variation around the year
-    # We shift by 172 days to reach minimum at late June and maximum in mid December
     variation = math.cos(2.0 * math.pi * (day_of_year - 172) / 365.25)
 
-    # Return sun constant for the given Julian date
     return mean_value - amplitude * variation
 
 
+def get_time_sequence(t_jd) -> List:
+    return load.timescale().utc(
+        t_jd[0].value.year, t_jd[0].value.month, t_jd[0].value.day,
+        t_jd[0].value.hour, t_jd[0].value.minute, range(0,
+                                                        len(t_jd) * 10, 10)
+    )
+
+
+def get_sun_position(t: List) -> ICRF:
+    eph = load('de421.bsp')
+    sun = eph['sun']
+    earth = eph['earth']
+
+    astrometric = earth.at(t).observe(sun)
+    apparent = astrometric.apparent()
+
+    sun_position = apparent.position.au
+    seq_sun_position_eci = ICRF(sun_position, t=t)
+
+    return seq_sun_position_eci
+
+
+def plot_data(
+    x: List,
+    y1: List,
+    y2: List,
+    title: str,
+    xlabel: str,
+    ylabel: str,
+    legend_labels: List[str],
+    accumulate: bool = False
+):
+    if accumulate:
+        y1 = list(itertools.accumulate(y1))
+        y2 = list(itertools.accumulate(y2))
+
+    plt.plot(x, y1, label=legend_labels[0])
+    plt.plot(x, y2, label=legend_labels[1])
+    plt.title(title)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.legend()
+    plt.show()
+
+
 def main():
-    def generate_data(size, step=0.01):
-        angle = np.linspace(0, step * size, size)
-        q_eci2body = tuple(Quaternion(axis=[1, 0, 0], degrees=a) for a in angle)
+    t_jd, seq_q_eci2body, _, powers, _, _ = parse.parse_data()
 
-        t_jd = tuple(
-            np.linspace(
-                2458152.5000000 - step * size / 2,
-                2458152.5000000 + step * size / 2, size
-            )
-        )
+    bpy.ops.wm.open_mainfile(filepath=config.filepath)
 
-        r = tuple(
-            np.array(
-                [
-                    i + step * n
-                    for i in [-1062.11041563, -5958.95237065, 318.47154649]
-                ]
-            ) for n in range(size)
-        )
-        v = tuple(
-            np.array(
-                [i + step * n for i in [-7.36150147, 1.48246792, 0.06629659]]
-            ) for n in range(size)
-        )
+    t = get_time_sequence(t_jd)
 
-        return q_eci2body, t_jd, r, v
+    seq_sun_position_eci = get_sun_position(t)
 
-    # Generating data
-    SIZE = 100
-    STEP = 100
-    # seq_q_eci2body, seq_t_jd, seq_r, seq_v = generate_data(SIZE, STEP)
-    seq_t_jd, seq_q_eci2body, areas, powers, seq_r, seq_v = parse.parse_data()
+    satellites = load.tle_file(config.stations_url)
+    by_name = {sat.name: sat for sat in satellites}
+    satellite = by_name['ISS (ZARYA)']
+    sunlit = satellite.at(t).is_sunlit(load('de421.bsp'))
 
-    # Specify the path to your .blend file
-    filepath = "../model/model.blend"
+    seq_sun_constant = [get_sun_constant(time.tt) for time in t]
 
-    # Load the .blend file
-    bpy.ops.wm.open_mainfile(filepath=filepath)
+    index = 270
+    powers = powers[:index]
+    seq_q_eci2body = seq_q_eci2body[:index]
+    seq_sun_position_eci = seq_sun_position_eci[:index]
+    seq_sun_constant = seq_sun_constant[:index]
+    sunlit = sunlit[:index]
+    seq_power = [
+        generate_power(q_eci2body, sun_position_eci.position.km, sun_constant)
+        if is_lit else 0 for q_eci2body, sun_position_eci, sun_constant, is_lit
+        in zip(seq_q_eci2body, seq_sun_position_eci, seq_sun_constant, sunlit)
+    ]
 
-    seq_power = list()
-    index = 0
-    for q_eci2body, t_jd, r, v in zip(seq_q_eci2body, seq_t_jd, seq_r, seq_v):
-        index = index + 1
-        seq_power.append(generate_power(q_eci2body, t_jd, r, v))
-    
-    with open('our_area', 'w') as file:
+    with open(config.output_file, 'w') as file:
         file.write(str(seq_power))
+
+    x = range(index)
+    title = 'Comparison of Power Sequences'
+    xlabel = 'Time Step'
+    ylabel = 'Power Value'
+    legend_labels = ['STK', 'Blender']
+    plot_data(
+        x,
+        powers,
+        seq_power,
+        title,
+        xlabel,
+        ylabel,
+        legend_labels,
+        accumulate=True
+    )
 
 
 if __name__ == "__main__":
     main()
 
-import matplotlib.pyplot as plt
-import ast
-def rr():
-    with open('our_area', 'r') as file:
-        seq_power_str = file.read()
-    
-    return seq_power_str
-
-seq_power = ast.literal_eval(rr())
-
-import parse
-_, _, p, _, _, _ = parse.parse_data()
-
-plt.plot(p, label='p')
-plt.plot(seq_power, label='seq_power')
-plt.title('Two lists on the same plot')
-plt.xlabel('Index')
-plt.ylabel('Value')
-plt.legend()
-plt.show()
+# import ast
+# def rr():
+#     with open('our_power', 'r') as file:
+#         seq_power_str = file.read()
+#
+#     return seq_power_str
+#
+# seq_power = ast.literal_eval(rr())
