@@ -15,7 +15,7 @@ def csvread(filename, remove_header=True):
 
 
 def parse_data():
-    rows = csvread('quaternion_spin_inertial.csv')
+    rows = csvread('Satellite1 Attitude Quaternions.csv')
     # Construct the times (as Julian dates) and quaternions tuples, ignoring incomplete or empty rows
     times = tuple(
         (Time(datetime.strptime(row[0], "%d %b %Y %H:%M:%S.%f"), scale='utc'))
@@ -26,10 +26,10 @@ def parse_data():
         for row in rows
     )
 
-    rows = csvread('area_spin_inertial.csv')
+    rows = csvread('Satellite1 Solar Panel Area.csv')
     areas = tuple(float(row[1]) for row in rows)
 
-    rows = csvread('power_spin_inertial.csv')
+    rows = csvread('Satellite1 Solar Panel Power.csv')
     powers = tuple(float(row[1]) for row in rows)
 
     # rows = csvread('position-velocity.csv')
