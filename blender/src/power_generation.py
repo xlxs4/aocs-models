@@ -11,9 +11,6 @@ from blender import get_cross_section
 import parse
 import matplotlib.pyplot as plt
 import itertools
-import pyquaternion
-import cProfile
-import pstats
 
 
 @dataclass
@@ -161,31 +158,22 @@ def main():
     # with open(config.output_file, 'w') as file:
     #     file.write(str(seq_power))
 
-    # x = range(index)
-    # title = 'Comparison of Power Sequences'
-    # xlabel = 'Time Step'
-    # ylabel = 'Power Value'
-    # legend_labels = ['STK', 'Blender']
-    # plot_data(
-    #     x,
-    #     powers,
-    #     seq_power,
-    #     title,
-    #     xlabel,
-    #     ylabel,
-    #     legend_labels,
-    #     accumulate=False
-    # )
+    x = range(index)
+    title = 'Comparison of Power Sequences'
+    xlabel = 'Time Step'
+    ylabel = 'Power Value'
+    legend_labels = ['STK', 'Blender']
+    plot_data(
+        x,
+        powers,
+        seq_power,
+        title,
+        xlabel,
+        ylabel,
+        legend_labels,
+        accumulate=False
+    )
 
 
 if __name__ == "__main__":
-    profiler = cProfile.Profile()
-    profiler.enable()
-
     main()
-
-    profiler.disable()
-    profiler.dump_stats('main_stats.prof')
-
-    stats = pstats.Stats('main_stats.prof')
-    stats.sort_stats('cumulative').print_stats()
