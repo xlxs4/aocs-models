@@ -5,30 +5,8 @@ import numpy as np
 def get_cross_section(quaternion):
     pixels_per_m2 = 264921.8466012359
 
-    bpy.data.objects["PeakSat v2"].rotation_mode = 'QUATERNION'
     bpy.data.objects["PeakSat v2"].rotation_quaternion = tuple(quaternion)
-
-    # switch on nodes
-    bpy.context.scene.use_nodes = True
-    tree = bpy.context.scene.node_tree
-    links = tree.links
-
-    # create input render layer node
-    rl = tree.nodes.new('CompositorNodeRLayers')
-    rl.location = 185, 285
-
-    # create output node
-    v = tree.nodes.new('CompositorNodeViewer')
-    v.location = 750, 210
-    v.use_alpha = False
-
-    # Links
-    links.new(rl.outputs[0], v.inputs[0])  # link Image output to Viewer input
-
-    # Specify render resolution
-    bpy.context.scene.render.resolution_x = 400
-    bpy.context.scene.render.resolution_y = 400
-
+    
     # Render the scene
     bpy.ops.render.render(write_still=False)
 
