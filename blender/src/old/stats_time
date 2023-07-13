@@ -1,0 +1,663 @@
+Thu Jul 13 21:16:02 2023    main_stats.prof
+
+         459153 function calls (457471 primitive calls) in 83.791 seconds
+
+   Ordered by: internal time
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      540   56.681    0.105   56.681    0.105 {built-in method _bpy.ops.call}
+     7284   12.094    0.002   12.094    0.002 {built-in method numpy.array}
+      539   10.410    0.019   83.340    0.155 /Users/xlxs4/GitHub/aocs-models/blender/src/blender.py:5(get_cross_section)
+     1079    4.079    0.004    4.079    0.004 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/modules/bpy/ops.py:64(_view_layer_update)
+      539    0.071    0.000   83.507    0.155 /Users/xlxs4/GitHub/aocs-models/blender/src/power_generation.py:34(generate_power)
+     2776    0.069    0.000    0.069    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+        1    0.027    0.027    0.029    0.029 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/nutationlib.py:250(iau2000a)
+      721    0.014    0.000    0.039    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:1229(_apply)
+      722    0.013    0.000    0.045    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:1090(to_value)
+     1442    0.012    0.000    0.032    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/utils.py:18(day_frac)
+     2707    0.010    0.000    0.083    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:71(_wrapreduction)
+     1442    0.009    0.000    0.079    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:486(_init_from_vals)
+     2884    0.009    0.000    0.078    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:145(__init__)
+      540    0.009    0.000   60.771    0.113 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/modules/bpy/ops.py:92(__call__)
+     4326    0.009    0.000    0.009    0.000 {method 'round' of 'numpy.generic' objects}
+      539    0.009    0.000    0.023    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:1468(cross)
+      539    0.008    0.000    0.008    0.000 {built-in method from_matrix}
+     3773    0.007    0.000    0.013    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/linalg/linalg.py:2383(norm)
+     3955    0.007    0.000    0.027    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:52(__init__)
+        1    0.006    0.006   83.526   83.526 /Users/xlxs4/GitHub/aocs-models/blender/src/power_generation.py:133(<listcomp>)
+      539    0.006    0.000    0.048    0.000 /Users/xlxs4/GitHub/aocs-models/blender/src/utils.py:5(align_with_sun_and_nadir)
+     1444    0.006    0.000    0.009    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:482(__getitem__)
+     5768    0.006    0.000    0.007    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:2181(_validate_jd_for_storage)
+     1617    0.005    0.000    0.009    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/shape_base.py:292(hstack)
+      722    0.005    0.000    0.014    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/erfa/core.py:16170(d2dtf)
+     7224    0.005    0.000    0.006    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/utils/decorators.py:828(__get__)
+    42016    0.005    0.000    0.006    0.000 {built-in method builtins.isinstance}
+3605/2163    0.005    0.000    0.096    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:1621(__getattr__)
+     3955    0.005    0.000    0.005    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:161(<listcomp>)
+      721    0.004    0.000    0.008    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:309(_strptime)
+     3779    0.004    0.000    0.004    0.000 {method 'dot' of 'numpy.ndarray' objects}
+     1617    0.004    0.000    0.012    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:1393(moveaxis)
+     3234    0.004    0.000    0.006    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:1330(normalize_axis_tuple)
+     1444    0.003    0.000    0.016    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:263(masked)
+     4326    0.003    0.000    0.003    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3265(_round_dispatcher)
+       42    0.003    0.000    0.006    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/spk.py:194(generate)
+     2884    0.003    0.000    0.003    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/utils.py:121(two_sum)
+     2156    0.003    0.000    0.003    0.000 {method 'reshape' of 'numpy.ndarray' objects}
+     1442    0.003    0.000    0.088    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:1813(__init__)
+      721    0.003    0.000    0.018    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:1064(set_jds)
+        1    0.003    0.003    0.165    0.165 /Users/xlxs4/GitHub/aocs-models/blender/src/power_generation.py:123(<listcomp>)
+    12886    0.003    0.000    0.005    0.000 {built-in method builtins.getattr}
+      721    0.003    0.000    0.157    0.000 /Users/xlxs4/GitHub/aocs-models/blender/src/power_generation.py:50(get_sun_constant)
+      726    0.003    0.000    0.093    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:926(to_value)
+      722    0.003    0.000    0.010    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/positionlib.py:213(__getitem__)
+     1078    0.003    0.000    0.020    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:527(conjugate)
+     3955    0.003    0.000    0.009    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:151(_validate_number_sequence)
+     1443    0.003    0.000    0.013    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/erfa/core.py:101(check_errwarn)
+      542    0.002    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/units.py:59(__get__)
+     6950    0.002    0.000    0.004    0.000 {built-in method builtins.hasattr}
+      539    0.002    0.000    0.071    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:2177(sum)
+        2    0.002    0.001    0.002    0.001 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/daf.py:92(map_words)
+    10314    0.002    0.000    0.002    0.000 {built-in method numpy.asarray}
+     1442    0.002    0.000    0.066    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:555(_get_time_fmt)
+     2884    0.002    0.000    0.006    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:231(jd2)
+      721    0.002    0.000    0.003    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:291(_check_val_type)
+     3775    0.002    0.000    0.002    0.000 {method 'ravel' of 'numpy.ndarray' objects}
+     7931    0.002    0.000    0.003    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:435(_select_subfmts)
+        1    0.002    0.002    0.002    0.002 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/earthlib.py:139(earth_rotation_angle)
+     1078    0.002    0.000    0.008    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:452(__mul__)
+      721    0.002    0.000    0.006    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/erfa/core.py:16618(dtf2d)
+     2165    0.002    0.000    0.006    0.000 {method 'any' of 'numpy.generic' objects}
+     1617    0.002    0.000    0.004    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/shape_base.py:23(atleast_1d)
+     4326    0.002    0.000    0.013    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:3269(round)
+     4329    0.002    0.000    0.011    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:53(_wrapfunc)
+     1078    0.002    0.000    0.003    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:656(_q_matrix)
+      721    0.002    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:273(precision)
+      722    0.002    0.000    0.003    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:255(mask)
+      721    0.002    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:570(<listcomp>)
+      539    0.002    0.000    0.003    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/shape_base.py:219(vstack)
+    24194    0.002    0.000    0.002    0.000 {built-in method builtins.issubclass}
+      721    0.002    0.000    0.007    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:474(_check_val_type)
+     2165    0.002    0.000    0.017    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:2322(any)
+     2884    0.002    0.000    0.006    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:221(jd1)
+     2884    0.001    0.000    0.003    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:201(in_subfmt)
+      735    0.001    0.000    0.003    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/positionlib.py:123(__init__)
+     1442    0.001    0.000    0.003    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:3162(_make_array)
+     2707    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:72(<dictcomp>)
+      539    0.001    0.000    0.004    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:572(_normalise)
+      540    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/modules/bpy/ops.py:154(_bpy_ops_submodule)
+     3606    0.001    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:240(scale)
+      722    0.001    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:883(_shaped_like_input)
+     1484    0.001    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:457(__init__)
+    18551    0.001    0.000    0.001    0.000 {method 'get' of 'dict' objects}
+     4327    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:363(_check_scale)
+      721    0.001    0.000    0.001    0.000 {method 'timetuple' of 'datetime.datetime' objects}
+     2884    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:277(precision)
+      539    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/shape_base.py:81(atleast_2d)
+     2195    0.001    0.000    0.001    0.000 {built-in method __new__ of type object at 0x101467a68}
+23483/23440    0.001    0.000    0.001    0.000 {built-in method builtins.len}
+     1623    0.001    0.000    0.001    0.000 {built-in method builtins.sorted}
+     5050    0.001    0.000    0.001    0.000 {built-in method builtins.setattr}
+      721    0.001    0.000    0.029    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:558(set_jds)
+     2884    0.001    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:211(out_subfmt)
+      539    0.001    0.000    0.023    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:692(rotate)
+        1    0.001    0.001    0.001    0.001 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/nutationlib.py:109(equation_of_the_equinoxes_complimentary_terms)
+     1442    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:3192(_check_for_masked_and_fill)
+     2695    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:1255(__getitem__)
+      539    0.001    0.000    0.018    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:680(_rotate_quaternion)
+     1636    0.001    0.000    0.001    0.000 {method 'transpose' of 'numpy.ndarray' objects}
+     1442    0.001    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:1794(__new__)
+      540    0.001    0.000    0.003    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/modules/bpy/ops.py:164(__getattr__)
+       24    0.001    0.000    0.001    0.000 {method 'decompress' of 'zlib.Decompress' objects}
+      540    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/modules/bpy/ops.py:89(idname_py)
+      539    0.001    0.000    0.001    0.000 {method 'as_quat' of 'scipy.spatial.transform._rotation.Rotation' objects}
+     2165    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:2317(_any_dispatcher)
+     1077    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:524(_sum_of_squares)
+        3    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/src/parse.py:7(csvread)
+     2888    0.001    0.000    0.001    0.000 {built-in method _abc._abc_instancecheck}
+      721    0.001    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numerictypes.py:357(issubdtype)
+     2884    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:2197(_broadcast_writeable)
+     2163    0.001    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:719(scale)
+     2156    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/shape_base.py:207(_arrays_for_stack_dispatcher)
+     4869    0.001    0.000    0.001    0.000 {built-in method numpy.core._multiarray_umath.normalize_axis_index}
+     2156    0.001    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/shape_base.py:215(_vhstack_dispatcher)
+     1442    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numerictypes.py:283(issubclass_)
+     3234    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:1380(<listcomp>)
+      722    0.001    0.000    0.040    0.000 /Users/xlxs4/GitHub/aocs-models/blender/src/parse.py:20(<genexpr>)
+     1442    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:354(asarray_or_scalar)
+      540    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/modules/bpy/ops.py:135(_bpy_ops_submodule__getattr__)
+     1127    0.001    0.000    0.001    0.000 {method 'astype' of 'numpy.ndarray' objects}
+      539    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:643(is_unit)
+        1    0.001    0.001    0.030    0.030 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/nutationlib.py:27(iau2000a_radians)
+     2194    0.001    0.000    0.004    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/_methods.py:55(_any)
+     1093    0.001    0.000    0.001    0.000 {method 'startswith' of 'str' objects}
+     1443    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:284(cache)
+     1442    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:183(_get_allowed_subfmt)
+     3773    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/linalg/linalg.py:140(isComplexType)
+      735    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/units.py:99(__init__)
+     2884    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:246(scale)
+        2    0.001    0.000    0.001    0.000 {method '_sgp4' of 'sgp4.vallado_cpp.Satrec' objects}
+      721    0.001    0.000    0.040    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:1198(replicate)
+     2888    0.001    0.000    0.001    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/abc.py:117(__instancecheck__)
+     1617    0.001    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:1213(vector)
+      538    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+        1    0.000    0.000    0.034    0.034 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:885(gast)
+      164    0.000    0.000    0.000    0.000 {built-in method builtins.divmod}
+      721    0.000    0.000    0.008    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:565(_strptime_datetime)
+     4851    0.000    0.000    0.000    0.000 {built-in method numpy.asanyarray}
+     2886    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:217(jd1)
+      722    0.000    0.000    0.015    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:269(jd2_filled)
+      727    0.000    0.000    0.000    0.000 {method 'match' of 're.Pattern' objects}
+     2886    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:227(jd2)
+     3243    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/multiarray.py:741(dot)
+     6414    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+      723    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/locale.py:396(normalize)
+      540    0.000    0.000    0.000    0.000 {built-in method numpy.empty}
+       10    0.000    0.000    0.000    0.000 {built-in method numpy.core._multiarray_umath.c_einsum}
+      722    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/src/parse.py:24(<genexpr>)
+      726    0.000    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:1610(cache)
+     1442    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:197(in_subfmt)
+     1661    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/functions.py:183(_to_array)
+      721    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:1053(_check_val_type)
+     3773    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/linalg/linalg.py:2379(_norm_dispatcher)
+        9    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:1086(tdb_minus_tt)
+     2711    0.000    0.000    0.000    0.000 {method 'items' of 'dict' objects}
+      722    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/ma/core.py:6672(is_masked)
+      721    0.000    0.000    0.000    0.000 {method 'groupdict' of 're.Match' objects}
+     1078    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:1204(scalar)
+     3234    0.000    0.000    0.000    0.000 {built-in method _operator.index}
+      540    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/modules/bpy/ops.py:156(<lambda>)
+     1505    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.RLock' objects}
+      722    0.000    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:250(mask_if_needed)
+      538    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/pyquaternion/quaternion.py:555(norm)
+      735    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/units.py:165(__init__)
+      721    0.000    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:789(precision)
+      723    0.000    0.000    0.001    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/locale.py:587(getlocale)
+      721    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:802(in_subfmt)
+     2158    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/multiarray.py:153(concatenate)
+     2934    0.000    0.000    0.000    0.000 {method 'lower' of 'str' objects}
+      721    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:815(out_subfmt)
+      721    0.000    0.000    0.009    0.000 {built-in method strptime}
+      722    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/ma/core.py:1362(getmask)
+     1443    0.000    0.000    0.000    0.000 {method 'encode' of 'str' objects}
+      731    0.000    0.000    0.000    0.000 {built-in method builtins.all}
+        1    0.000    0.000    0.043    0.043 /Users/xlxs4/GitHub/aocs-models/blender/src/parse.py:17(parse_data)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/precessionlib.py:6(compute_precession)
+        6    0.000    0.000    0.000    0.000 {built-in method io.open}
+     1617    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:1455(<listcomp>)
+      723    0.000    0.000    0.001    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/locale.py:479(_parse_localename)
+      724    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:901(tt)
+      723    0.000    0.000    0.001    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:26(_getlang)
+      723    0.000    0.000    0.000    0.000 {built-in method _locale.setlocale}
+     1442    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:1054(<genexpr>)
+      540    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/modules/bpy/ops.py:77(__init__)
+     1461    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/multiarray.py:346(where)
+     1639    0.000    0.000    0.000    0.000 {method 'insert' of 'list' objects}
+     32/3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:494(_parse)
+      539    0.000    0.000    0.000    0.000 {built-in method numpy.promote_types}
+      542    0.000    0.000    0.000    0.000 {built-in method builtins.abs}
+     1443    0.000    0.000    0.000    0.000 {method 'item' of 'numpy.ndarray' objects}
+       10    0.000    0.000    0.000    0.000 {built-in method builtins.compile}
+     1617    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:1389(_moveaxis_dispatcher)
+     43/3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:87(_compile)
+     1452    0.000    0.000    0.000    0.000 {method 'upper' of 'str' objects}
+      721    0.000    0.000    0.000    0.000 {built-in method math.cos}
+     1617    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/shape_base.py:19(_atleast_1d_dispatcher)
+      727    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:627(format)
+        5    0.000    0.000    0.000    0.000 {built-in method io.open_code}
+        9    0.000    0.000    0.000    0.000 {built-in method posix.stat}
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/sgp4lib.py:310(theta_GMST1982)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/relativity.py:121(_add_deflection)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/nutationlib.py:50(build_nutation_matrix)
+      721    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/formats.py:207(out_subfmt)
+      721    0.000    0.000    0.000    0.000 {method 'index' of 'list' objects}
+       29    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:222(_utc)
+       19    0.000    0.000    0.000    0.000 {method 'read' of '_io.BufferedReader' objects}
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/sgp4lib.py:171(<listcomp>)
+     1442    0.000    0.000    0.000    0.000 {method 'toordinal' of 'datetime.date' objects}
+      539    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:1464(_cross_dispatcher)
+       10    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/format.py:738(read_array)
+        1    0.000    0.000   83.791   83.791 /Users/xlxs4/GitHub/aocs-models/blender/src/power_generation.py:106(main)
+      723    0.000    0.000    0.000    0.000 {built-in method builtins.callable}
+       50    0.000    0.000    0.001    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:902(read)
+      722    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/src/parse.py:30(<genexpr>)
+        2    0.000    0.000    0.003    0.001 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/iokit.py:344(timescale)
+      722    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/src/parse.py:33(<genexpr>)
+       28    0.000    0.000    0.000    0.000 {built-in method twoline2rv}
+      723    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.lock' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/nutationlib.py:361(fundamental_arguments)
+        8    0.000    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/spk.py:161(_data)
+       31    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/curvelib.py:21(__call__)
+       20    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1480(open)
+      539    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:2172(_sum_dispatcher)
+       38    0.000    0.000    0.000    0.000 {method 'strftime' of 'datetime.date' objects}
+        9    0.000    0.000    0.000    0.000 {built-in method numpy.arange}
+       62    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:740(read)
+       14    0.000    0.000    0.006    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/spk.py:157(compute_and_differentiate)
+       29    0.000    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/iokit.py:479(parse_tle_file)
+       18    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:1240(rollaxis)
+      220    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:234(__next)
+       63    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/_compatibility.py:10(interp)
+       24    0.000    0.000    0.001    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:984(_read1)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/geometry.py:7(intersect_line_and_sphere)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1328(_RealGetContents)
+        1    0.000    0.000    0.000    0.000 {built-in method marshal.loads}
+       63    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/function_base.py:1461(interp)
+       14    0.000    0.000    0.006    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:228(_at)
+       60    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/spk.py:15(jd)
+       63    0.000    0.000    0.000    0.000 {built-in method numpy.core._multiarray_umath.interp}
+       20    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:792(__init__)
+      721    0.000    0.000    0.000    0.000 {method 'end' of 're.Match' objects}
+      731    0.000    0.000    0.000    0.000 {method 'keys' of 'dict' objects}
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/format.py:587(_read_array_header)
+    50/10    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:175(getwidth)
+      262    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:165(__getitem__)
+    82/10    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/ast.py:84(_convert)
+       28    0.000    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/sgp4lib.py:94(__init__)
+      721    0.000    0.000    0.000    0.000 {method 'weekday' of 'datetime.date' objects}
+        1    0.000    0.000    0.002    0.002 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/earthlib.py:117(sidereal_time)
+      539    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/shape_base.py:77(_atleast_2d_dispatcher)
+        2    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:1137(build_delta_t)
+      721    0.000    0.000    0.000    0.000 {method 'items' of 'collections.OrderedDict' objects}
+       29    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:1006(julian_day)
+       32    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/daf.py:180(summaries)
+       18    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/functions.py:65(length_of)
+        9    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:181(__getitem__)
+       30    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/spk.py:109(__init__)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/daf.py:25(__init__)
+       25    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:292(_optimize_charset)
+        2    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:134(__init__)
+        1    0.000    0.000    0.002    0.002 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/relativity.py:23(add_deflection)
+       10    0.000    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/npyio.py:235(__getitem__)
+       44    0.000    0.000    0.000    0.000 {built-in method zlib.crc32}
+       21    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:128(<listcomp>)
+      124    0.000    0.000    0.000    0.000 {method 'decode' of 'bytes' objects}
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/functions.py:169(rot_z)
+     12/3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:436(_parse_sub)
+     11/7    0.000    0.000    0.034    0.005 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/descriptorlib.py:10(__get__)
+       40    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/format.py:951(_read_bytes)
+        2    0.000    0.000    0.035    0.018 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/sgp4lib.py:193(_at)
+        1    0.000    0.000    0.002    0.002 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/positionlib.py:622(is_sunlit)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/type_check.py:403(nan_to_num)
+        2    0.000    0.000    0.000    0.000 {method 'round' of 'numpy.ndarray' objects}
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/curvelib.py:32(derivative)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/npyio.py:282(load)
+        2    0.000    0.000    0.005    0.002 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/vectorlib.py:232(_at)
+       10    0.000    0.000    0.041    0.004 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/vectorlib.py:77(at)
+        2    0.000    0.000    0.001    0.001 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:69(__init__)
+        9    0.000    0.000    0.000    0.000 {method '__exit__' of '_io._IOBase' objects}
+      145    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:255(get)
+        2    0.000    0.000    0.035    0.017 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/sgp4lib.py:299(rotation_at)
+       63    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/type_check.py:302(iscomplexobj)
+      163    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+       11    0.000    0.000    0.001    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/re.py:288(_compile)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/pkgutil.py:599(get_data)
+       30    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/spk.py:82(build_segment)
+        8    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/daf.py:135(read_array)
+        1    0.000    0.000    0.001    0.001 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/vectorlib.py:247(_correct_for_light_travel_time)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/relativity.py:171(add_aberration)
+       24    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1020(_read2)
+       14    0.000    0.000    0.000    0.000 {method 'seek' of '_io.BufferedReader' objects}
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1218(__init__)
+       47    0.000    0.000    0.000    0.000 {method 'format' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/nutationlib.py:80(mean_obliquity)
+        2    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/sgp4lib.py:157(_position_and_velocity_TEME_km)
+        2    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:73(<listcomp>)
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/functions.py:31(dots)
+       29    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:199(utc)
+      146    0.000    0.000    0.000    0.000 {method 'startswith' of 'bytes' objects}
+       20    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1036(close)
+        8    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:377(tdb_jd)
+        2    0.000    0.000    0.002    0.001 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/iokit.py:168(__call__)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/spk.py:38(<listcomp>)
+        8    0.000    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/daf.py:149(map_array)
+        7    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/curvelib.py:10(__init__)
+        5    0.000    0.000    0.000    0.000 {built-in method numpy.zeros}
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/ast.py:54(literal_eval)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/relativity.py:102(light_time_difference)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/iokit.py:401(_search)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/spk.py:36(__init__)
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:346(__init__)
+       48    0.000    0.000    0.000    0.000 {built-in method _struct.unpack}
+        4    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1536(find_spec)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/addons/cycles/version_update.py:66(do_versions)
+        2    0.000    0.000    0.000    0.000 {built-in method builtins.__build_class__}
+       25    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:265(_compile_charset)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:173(__init__)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:238(pattern)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:841(outer)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:259(_EndRecData)
+      118    0.000    0.000    0.000    0.000 {method 'read' of '_io.BytesIO' objects}
+        3    0.000    0.000    0.001    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:783(compile)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/urllib/parse.py:444(urlsplit)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/npyio.py:185(__init__)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/fnmatch.py:80(translate)
+       98    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:173(append)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/daf.py:35(unpack)
+       36    0.000    0.000    0.000    0.000 {method 'join' of 'str' objects}
+       87    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:250(match)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/ufunclike.py:71(isposinf)
+       55    0.000    0.000    0.000    0.000 {method 'translate' of 'str' objects}
+       30    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:212(__init__)
+       55    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/re.py:269(escape)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:1(<module>)
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/positionlib.py:29(build_position)
+        2    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/sgp4/wrapper.py:8(sgp4_array)
+       30    0.000    0.000    0.000    0.000 {method 'sum' of 'numpy.ndarray' objects}
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1070(get_data)
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/utils.py:1027(safe_eval)
+        9    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:152(decode)
+      112    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:185(<genexpr>)
+        1    0.000    0.000    0.001    0.001 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:776(M)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/addons/pose_library/gui.py:167(register_message_bus)
+       20    0.000    0.000    0.000    0.000 {built-in method zlib.decompressobj}
+       32    0.000    0.000    0.000    0.000 {method 'strip' of 'bytes' objects}
+       34    0.000    0.000    0.000    0.000 {method 'unpack' of '_struct.Struct' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:107(__calc_date_time)
+       29    0.000    0.000    0.000    0.000 {method 'any' of 'numpy.ndarray' objects}
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:67(zeros_like)
+       16    0.000    0.000    0.000    0.000 {method 'flush' of 'zlib.Decompress' objects}
+       30    0.000    0.000    0.001    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:203(__new__)
+       73    0.000    0.000    0.000    0.000 {built-in method builtins.max}
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/fnmatch.py:25(fnmatch)
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/format.py:282(descr_to_dtype)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/npyio.py:91(zipfile_factory)
+        1    0.000    0.000    0.000    0.000 {built-in method msgbus.subscribe_rna}
+        8    0.000    0.000    0.000    0.000 {built-in method time.strftime}
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:51(_cat)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/type_check.py:393(_getmaxmin)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/posixpath.py:117(splitext)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/spk.py:44(open)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:560(_compile_info)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/functions.py:57(mxmxm)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/daf.py:74(read_record)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/npyio.py:212(close)
+        8    0.000    0.000    0.002    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/descriptorlib.py:9(__get__)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:1114(__call__)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/posixpath.py:71(join)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/fnmatch.py:70(fnmatchcase)
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/einsumfunc.py:1009(einsum)
+        2    0.000    0.000    0.001    0.001 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/vectorlib.py:203(_at)
+       30    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/encodings/cp437.py:14(decode)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/genericpath.py:121(_splitext)
+        8    0.000    0.000    0.000    0.000 {method 'sub' of 're.Pattern' objects}
+       20    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:700(_get_decompressor)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:944(parse)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/functions.py:224(load_bundled_npy)
+       20    0.000    0.000    0.000    0.000 {function ZipExtFile.close at 0x101754f70}
+       43    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:112(__init__)
+       51    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/einsumfunc.py:1001(_einsum_dispatcher)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/iokit.py:211(_assure)
+       24    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:937(_update_crc)
+       17    0.000    0.000    0.000    0.000 {built-in method _codecs.utf_8_decode}
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/posixpath.py:150(dirname)
+       19    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:356(_escape)
+       32    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:262(_format_code_and_name)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/functions.py:47(mxv)
+        3    0.000    0.000    0.000    0.000 {built-in method _abc._abc_subclasscheck}
+       20    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:751(close)
+       10    0.000    0.000    0.000    0.000 {built-in method numpy.frombuffer}
+      6/3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:485(_get_literal_prefix)
+       67    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:161(__len__)
+       20    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:719(__init__)
+       24    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1939(_fpclose)
+        1    0.000    0.000    0.002    0.002 /Users/xlxs4/GitHub/aocs-models/blender/src/power_generation.py:61(get_time_sequence)
+       30    0.000    0.000    0.000    0.000 {built-in method _codecs.charmap_decode}
+       26    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/calendar.py:60(__getitem__)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:938(precession_matrix)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:492(_init_module_attrs)
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/format.py:223(read_magic)
+       21    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:126(_path_join)
+       17    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/codecs.py:319(decode)
+       32    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/spk.py:42(<genexpr>)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:921(_find_spec)
+       50    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:234(<genexpr>)
+       20    0.000    0.000    0.000    0.000 {method 'rfind' of 'str' objects}
+        1    0.000    0.000    0.002    0.002 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/iokit.py:268(tle_file)
+       30    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/_methods.py:47(_sum)
+       11    0.000    0.000    0.001    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/re.py:249(compile)
+        1    0.000    0.000    0.002    0.002 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/positionlib.py:805(apparent)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:931(nutation_matrix)
+        8    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/iokit.py:227(_log)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/vectorlib.py:64(__sub__)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/enum.py:986(__and__)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/functions.py:52(mxm)
+       82    0.000    0.000    0.000    0.000 {method 'seek' of '_io.BytesIO' objects}
+       14    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/calendar.py:79(__getitem__)
+       34    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:172(<genexpr>)
+        2    0.000    0.000    0.000    0.000 {method 'union' of 'set' objects}
+        8    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/curvelib.py:42(build_spline_given_ends)
+       38    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:287(tell)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/importlib/util.py:73(find_spec)
+       63    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/function_base.py:1457(_interp_dispatcher)
+       63    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/type_check.py:205(_is_type_dispatcher)
+       47    0.000    0.000    0.000    0.000 {method 'find' of 'bytearray' objects}
+       73    0.000    0.000    0.000    0.000 {method 'replace' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1399(_get_spec)
+       28    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/sgp4lib.py:115(_setup)
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/ast.py:33(parse)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:905(tdb)
+        1    0.000    0.000    0.006    0.006 /Users/xlxs4/GitHub/aocs-models/blender/src/power_generation.py:69(get_sun_position)
+       32    0.000    0.000    0.000    0.000 {method 'rstrip' of 'bytes' objects}
+       20    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1439(getinfo)
+        2    0.000    0.000    0.000    0.000 {method 'searchsorted' of 'numpy.ndarray' objects}
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:219(__seqToRE)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:664(_load_unlocked)
+       62    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1529(<lambda>)
+       18    0.000    0.000    0.000    0.000 {method 'remove' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:274(full)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/vectorlib.py:209(__init__)
+        7    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:85(opengroup)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/codecs.py:309(__init__)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:216(_EndRecData64)
+        3    0.000    0.000    0.000    0.000 {built-in method _csv.reader}
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/compat/py3k.py:49(isfileobj)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/genericpath.py:16(exists)
+       24    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:665(_check_compression)
+       35    0.000    0.000    0.000    0.000 {built-in method builtins.next}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:832(_mean_obliquity_radians)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/contextlib.py:533(__exit__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:950(get_code)
+        3    0.000    0.000    0.000    0.000 {built-in method _sre.compile}
+        1    0.000    0.000    0.001    0.001 <frozen importlib._bootstrap>:1022(_find_and_load)
+       12    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/posixpath.py:52(normcase)
+        8    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/contextlib.py:452(__init__)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:516(_get_charset_prefix)
+       22    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/format.py:652(<genexpr>)
+       16    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:254(_center)
+       11    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:433(_uniq)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/functions.py:42(T)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/enum.py:359(__call__)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/npyio.py:72(__init__)
+       14    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:81(_combine_flags)
+        8    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:1261(_normalize_jd_and_fraction)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:225(__init__)
+       32    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/jpllib.py:74(<genexpr>)
+        4    0.000    0.000    0.000    0.000 {method 'flatten' of 'numpy.ndarray' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/src/power_generation.py:116(<dictcomp>)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:622(_code)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:90(<listcomp>)
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:380(cache_from_source)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/jplephem/daf.py:165(summary_records)
+       31    0.000    0.000    0.000    0.000 {built-in method posix.fspath}
+        8    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/re.py:324(_subx)
+       66    0.000    0.000    0.000    0.000 {method 'tell' of '_io.BytesIO' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:83(<listcomp>)
+       77    0.000    0.000    0.000    0.000 {built-in method builtins.ord}
+       14    0.000    0.000    0.000    0.000 {method 'find' of 'str' objects}
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:732(_leap_seconds)
+        8    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1823(close)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/enum.py:678(__new__)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/posixpath.py:140(basename)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/urllib/parse.py:379(urlparse)
+       48    0.000    0.000    0.000    0.000 {method 'rstrip' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/iokit.py:314(open)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:447(_simple)
+        5    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/astropy/time/core.py:1007(value)
+        7    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:268(getuntil)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:179(_get_module_lock)
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:463(_decodeExtra)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/ufunclike.py:142(isneginf)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/fnmatch.py:44(_compile_pattern)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:49(__init__)
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/posixpath.py:41(_get_sep)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:2692(max)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:868(_parse_flags)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/contextlib.py:455(pop_all)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:863(tdb_fraction)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/vectorlib.py:61(__neg__)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:95(__calc_am_pm)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:91(<listcomp>)
+       18    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:1236(_rollaxis_dispatcher)
+       19    0.000    0.000    0.000    0.000 {method 'endswith' of 'str' objects}
+       20    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:82(groups)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/threading.py:90(RLock)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:1053(_handle_fromlist)
+        1    0.000    0.000    0.000    0.000 {built-in method time.tzset}
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/vectorlib.py:183(__init__)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/vectorlib.py:215(<genexpr>)
+        1    0.000    0.000    0.001    0.001 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/positionlib.py:752(observe)
+        1    0.000    0.000    0.002    0.002 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:880(gmst)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:152(__calc_timezone)
+       22    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:244(_verbose_message)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/addons/pose_library/gui.py:177(unregister_message_bus)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:868(ut1_fraction)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:721(spec_from_file_location)
+        1    0.000    0.000    0.000    0.000 {built-in method msgbus.clear_by_owner}
+        5    0.000    0.000    0.000    0.000 {method 'split' of 'str' objects}
+       45    0.000    0.000    0.000    0.000 {built-in method _sre.unicode_iscased}
+       20    0.000    0.000    0.000    0.000 {method 'index' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/_distutils_hack/__init__.py:89(find_spec)
+       32    0.000    0.000    0.000    0.000 {built-in method builtins.iter}
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/abc.py:121(__subclasscheck__)
+       29    0.000    0.000    0.000    0.000 {method 'strip' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/vectorlib.py:73(<listcomp>)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1408(namelist)
+       11    0.000    0.000    0.000    0.000 {built-in method builtins.any}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:872(delta_t)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:670(_compile_bytecode)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:1332(searchsorted)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:84(<listcomp>)
+        7    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:97(closegroup)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:100(acquire)
+       20    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:727(tell)
+       10    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/format.py:196(_check_version)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:619(isstring)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:361(tdb)
+        8    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:477(_get_iscased)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/urllib/parse.py:122(_coerce_args)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:987(_find_and_load_unlocked)
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:132(_path_split)
+        1    0.000    0.000    0.000    0.000 {method 'nonzero' of 'numpy.ndarray' objects}
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/iokit.py:153(path_to)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:1066(expand_template)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_collections_abc.py:78(_check_methods)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:76(__init__)
+       36    0.000    0.000    0.000    0.000 {built-in method _sre.unicode_tolower}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/getlimits.py:484(__new__)
+        1    0.000    0.000    0.030    0.030 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:813(_nutation_angles_radians)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/npyio.py:225(__del__)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:928(fix_flags)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:585(_classify_pyc)
+       11    0.000    0.000    0.000    0.000 {built-in method fromkeys}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/urllib/parse.py:418(_splitnetloc)
+        3    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:84(_unpack_uint32)
+       11    0.000    0.000    0.000    0.000 {method 'lstrip' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:71(__init__)
+       10    0.000    0.000    0.000    0.000 {built-in method _struct.calcsize}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:80(__calc_weekday)
+        6    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:140(_path_stat)
+        1    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+        1    0.000    0.000    0.001    0.001 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/vectorlib.py:105(_observe_from_bcrs)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1410(<listcomp>)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:877(exec_module)
+        9    0.000    0.000    0.000    0.000 {method 'rpartition' of 'str' objects}
+        8    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/multiarray.py:1080(copyto)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1356(_path_importer_cache)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/codecs.py:260(__init__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:510(_get_cached)
+        4    0.000    0.000    0.000    0.000 {built-in method sys.exc_info}
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:391(cached)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:564(module_from_spec)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:125(release)
+       20    0.000    0.000    0.000    0.000 {method 'seekable' of '_io.BytesIO' objects}
+        2    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:404(parent)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_compile.py:456(_generate_overlap_table)
+        4    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:67(_relax_case)
+        4    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:134(<genexpr>)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/timelib.py:1109(__init__)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/urllib/parse.py:426(_checknetloc)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:88(__calc_month)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/addons/pose_library/gui.py:187(_on_blendfile_load_post)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1531(_get_spec)
+        3    0.000    0.000    0.000    0.000 {method 'pop' of 'list' objects}
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/skyfield/functions.py:200(_reconcile)
+       10    0.000    0.000    0.000    0.000 {built-in method builtins.chr}
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/zipfile.py:1819(__del__)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/os.py:1080(__subclasshook__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:169(__enter__)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:897(__exit__)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/types.py:176(__get__)
+        2    0.000    0.000    0.000    0.000 {method 'fileno' of '_io.BufferedReader' objects}
+        2    0.000    0.000    0.000    0.000 {method 'upper' of 'bytes' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:198(cb)
+        5    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:893(__enter__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1431(find_spec)
+        6    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/sre_parse.py:169(__setitem__)
+        4    0.000    0.000    0.000    0.000 {built-in method _weakref.proxy}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:746(find_spec)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/bpy/4.0/scripts/addons/pose_library/gui.py:181(_on_blendfile_load_pre)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:30(LocaleTime)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/re.py:330(filter)
+        1    0.000    0.000    0.000    0.000 {built-in method _imp.is_builtin}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:618(_validate_timestamp_pyc)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:233(_call_with_frames_removed)
+        6    0.000    0.000    0.000    0.000 {method 'extend' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:542(_check_name_wrapper)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:128(<listcomp>)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:170(TimeRE)
+        1    0.000    0.000    0.001    0.001 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:261(compile)
+        7    0.000    0.000    0.000    0.000 {built-in method _imp.release_lock}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:357(__init__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:180(_path_isabs)
+        7    0.000    0.000    0.000    0.000 {method 'isidentifier' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:1881(nonzero)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/ufunclike.py:14(_dispatcher)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:826(find_spec)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:150(_path_is_mode_type)
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.locals}
+        3    0.000    0.000    0.000    0.000 {built-in method _thread.allocate_lock}
+        5    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/_strptime.py:210(<genexpr>)
+        7    0.000    0.000    0.000    0.000 {built-in method _imp.acquire_lock}
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:173(__exit__)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:159(_path_isfile)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1089(path_stats)
+        3    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:2687(_max_dispatcher)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:48(_new_module)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:165(__init__)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/_virtualenv.py:55(find_spec)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/lib/type_check.py:399(_nan_to_num_dispatcher)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/contextlib.py:530(__enter__)
+        1    0.000    0.000    0.000    0.000 <string>:1(<lambda>)
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/multiarray.py:85(empty_like)
+        3    0.000    0.000    0.000    0.000 {built-in method from_bytes}
+        4    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:63(_zeros_like_dispatcher)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:1328(_searchsorted_dispatcher)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1040(__init__)
+        2    0.000    0.000    0.000    0.000 {built-in method _thread.get_ident}
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/urllib/parse.py:111(_noop)
+        2    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/calendar.py:55(<lambda>)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:412(has_location)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:1065(get_filename)
+        1    0.000    0.000    0.000    0.000 {method 'pop' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method _imp.is_frozen}
+        1    0.000    0.000    0.000    0.000 {method 'group' of 're.Match' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/fromnumeric.py:1877(_nonzero_dispatcher)
+        1    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap_external>:874(create_module)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/.pyenv/versions/3.10.12/lib/python3.10/enum.py:801(value)
+        1    0.000    0.000    0.000    0.000 {method '__getitem__' of 'dict' objects}
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/numpy/core/numeric.py:837(_outer_dispatcher)
+        1    0.000    0.000    0.000    0.000 /Users/xlxs4/GitHub/aocs-models/blender/.venv/lib/python3.10/site-packages/_distutils_hack/__init__.py:96(<lambda>)
+        1    0.000    0.000    0.000    0.000 {method 'isascii' of 'str' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method _imp._fix_co_filename}
