@@ -10,17 +10,22 @@ def get_cross_section(quaternion):
     # Render the scene
     bpy.ops.render.render(write_still=False)
 
-    # copy buffer to numpy array for faster manipulation
-    arr = np.array(bpy.data.images['Viewer Node'].pixels)
-    image = arr.reshape(
+    # Working on a local copy of the pixels results in huge performance improvement.
+    # Additionally, instead of directly accessing pixels, we use foreach, introduced in
+    # https://projects.blender.org/blender/blender/commit/9075ec8269e7cb029f4fab6c1289eb2f1ae2858a
+    # and discussed in https://devtalk.blender.org/t/bpy-data-images-perf-issues/6459/11
+    pixels = np.empty(bpy.context.scene.render.resolution_x * bpy.context.scene.render.resolution_y * 4, dtype=np.float32)
+    bpy.data.images['Viewer Node'].pixels.foreach_get(pixels)
+    pixels = pixels.reshape(
         bpy.context.scene.render.resolution_x,
-        bpy.context.scene.render.resolution_y, 4
+        bpy.context.scene.render.resolution_y,
+        4
     )
 
-    image = np.dot(image[..., :3], [0.299, 0.587, 0.114])
+    pixels = np.dot(pixels[..., :3], [0.299, 0.587, 0.114])
     
     # Binarize the image using a threshold of 0.5
-    pixels_array_bin = image > 3.5
+    pixels_array_bin = pixels > 3.5
 
     # Count the white pixels (pixels over threshold)
     white_pixels = np.sum(pixels_array_bin)
