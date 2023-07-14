@@ -1,32 +1,41 @@
 import bpy
 import numpy as np
+from pyquaternion import Quaternion
 
 
-def get_cross_section(quaternion, pixels_per_m2):
-    bpy.data.objects["PeakSat v2"].rotation_quaternion = tuple(quaternion)
+def _get_object(name: str) -> bpy.types.Object:
+    try:
+        return bpy.data.objects[name]
+    except KeyError:
+        raise ValueError(f"'{name}' object not found in the current scene.")
 
+
+def _get_image(name: str) -> bpy.types.Image:
+    try:
+        return bpy.data.images[name]
+    except KeyError:
+        raise ValueError(f"'{name}' image not found in the current scene.")
+
+
+def get_cross_section(quaternion: Quaternion, pixels_per_m2: float) -> float:
+    if pixels_per_m2 == 0:
+        raise ValueError("pixels_per_m2 cannot be zero.")
+
+    obj = _get_object("PeakSat v2")
+    image = _get_image('Viewer Node')
+
+    obj.rotation_quaternion = tuple(quaternion)
     bpy.ops.render.render(write_still=False)
 
-    # Working on a local copy of the pixels results in huge performance improvement.
-    # Additionally, instead of directly accessing pixels, we use foreach, introduced in
-    # https://projects.blender.org/blender/blender/commit/9075ec8269e7cb029f4fab6c1289eb2f1ae2858a
-    # and discussed in https://devtalk.blender.org/t/bpy-data-images-perf-issues/6459/11
-    pixels = np.empty(
-        bpy.context.scene.render.resolution_x *
-        bpy.context.scene.render.resolution_y * 4,
-        dtype=np.float32
-    )
-    bpy.data.images['Viewer Node'].pixels.foreach_get(pixels)
-    pixels = pixels.reshape(
-        bpy.context.scene.render.resolution_x,
-        bpy.context.scene.render.resolution_y,
-        4
-    )
+    resolution_x = bpy.context.scene.render.resolution_x
+    resolution_y = bpy.context.scene.render.resolution_y
 
-    pixels = np.dot(pixels[..., :3], [0.299, 0.587, 0.114])
+    pixels = np.empty(resolution_x * resolution_y * 4, dtype=np.float32)
+    image.pixels.foreach_get(pixels)
 
-    # Binarize the image
-    pixels_array_bin = pixels > 3.5
-    white_pixels = np.sum(pixels_array_bin)
+    pixels = pixels.reshape(resolution_x, resolution_y, 4)
+    pixels = np.dot(pixels[..., :3], [0.299, 0.587, 0.114])  # RGB to grayscale
+
+    white_pixels = np.sum(pixels > 3.5)
 
     return white_pixels / pixels_per_m2
