@@ -38,6 +38,8 @@ From [StackExchange](https://blender.stackexchange.com/a/81239/169566)
 - `make bpy`
 - `cd ../lib/darwin_arm64/python/lib/python3.10/site-packages/`
 
+We're using [poetry](https://python-poetry.org/docs/) to manage dependencies.
+
 For Python 3.10:
 - `brew install pyenv`
 - `pyenv install 3.10`
@@ -45,3 +47,10 @@ For Python 3.10:
 - `poetry install`
 - `poetry shell`
 - `cp -r ~/blender-git/lib/darwin_arm64/python/lib/python3.10/site-packages/bpy .venv/lib/python3.10/site-packages/`
+
+To use the below you'll also need to install the dependencies in the `dev` group, by running `poetry install -E dev`
+
+We're using the [yapf](https://github.com/google/yapf) formatter.
+To format, if, e.g., you want to format all files in `src/`, go to `src/` and do `yapf -rpi --no-local-style --style "facebook" .`
+
+We're using [isort](https://pycqa.github.io/isort/) to categorize our module imports; just `isort .`
