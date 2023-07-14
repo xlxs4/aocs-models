@@ -1,6 +1,7 @@
 import bpy
 import numpy as np
 from pyquaternion import Quaternion
+from config import config
 
 
 def _get_object(name: str) -> bpy.types.Object:
@@ -17,8 +18,12 @@ def _get_image(name: str) -> bpy.types.Image:
         raise ValueError(f"'{name}' image not found in the current scene.")
 
 
-def get_cross_section(quaternion: Quaternion, pixels_per_m2: float) -> float:
-    if pixels_per_m2 == 0:
+def _rgb_to_grayscale(image: np.ndarray) -> np.ndarray:
+    return np.dot(image[..., :3], [0.299, 0.587, 0.114])
+
+
+def get_cross_section(quaternion: Quaternion) -> float:
+    if config.pixels_per_m2 == 0:
         raise ValueError("pixels_per_m2 cannot be zero.")
 
     obj = _get_object("PeakSat v2")
@@ -30,12 +35,16 @@ def get_cross_section(quaternion: Quaternion, pixels_per_m2: float) -> float:
     resolution_x = bpy.context.scene.render.resolution_x
     resolution_y = bpy.context.scene.render.resolution_y
 
+    # Working on a local copy of the pixels results in huge performance improvement.
+    # Additionally, instead of directly accessing pixels, we use foreach, introduced in
+    # https://projects.blender.org/blender/blender/commit/9075ec8269e7cb029f4fab6c1289eb2f1ae2858a
+    # and discussed in https://devtalk.blender.org/t/bpy-data-images-perf-issues/6459/11
     pixels = np.empty(resolution_x * resolution_y * 4, dtype=np.float32)
     image.pixels.foreach_get(pixels)
 
     pixels = pixels.reshape(resolution_x, resolution_y, 4)
-    pixels = np.dot(pixels[..., :3], [0.299, 0.587, 0.114])  # RGB to grayscale
+    pixels = _rgb_to_grayscale(pixels)
 
     white_pixels = np.sum(pixels > 3.5)
 
-    return white_pixels / pixels_per_m2
+    return white_pixels / config.pixels_per_m2

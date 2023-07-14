@@ -3,10 +3,13 @@ from typing import Callable, Dict, List, Tuple, Any
 from pyquaternion import Quaternion
 from astropy.time import Time
 from datetime import datetime
+from pathlib import Path
+from here import here
+from config import config
 
 
 def parse_csv(
-    filename: str,
+    filename: Path,
     data_type: Callable[[Dict[str, str]], Any],
     remove_header: bool = True,
     **kwargs: Any
@@ -37,9 +40,11 @@ def _parse_float(row: Dict[str, str], column: str) -> float:
 
 def parse_data(
 ) -> Tuple[List[Time], List[Quaternion], List[float], List[float]]:
-    times = parse_csv('quaternion.csv', _parse_time)
-    quaternions = parse_csv('quaternion.csv', _parse_quaternion)
-    areas = parse_csv('area.csv', _parse_float, column='Effective Area (m^2)')
-    powers = parse_csv('power.csv', _parse_float, column='Power (W)')
+    times = parse_csv(config.paths.stk_quaternion, _parse_time)
+    quaternions = parse_csv(config.paths.stk_quaternion, _parse_quaternion)
+    areas = parse_csv(
+        config.paths.stk_area, _parse_float, column='Effective Area (m^2)'
+    )
+    powers = parse_csv(config.paths.stk_power, _parse_float, column='Power (W)')
 
     return times, quaternions, areas, powers

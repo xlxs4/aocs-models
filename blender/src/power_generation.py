@@ -1,6 +1,5 @@
 import math
 from typing import List
-from dataclasses import dataclass
 from astropy.time import Time
 import bpy
 import numpy as np
@@ -8,25 +7,10 @@ from skyfield.api import load
 from skyfield.positionlib import ICRF
 from utils import align_with_sun_and_nadir
 from blender import get_cross_section
-from here import here
+from config import config
 import parse
 import matplotlib.pyplot as plt
 import itertools
-
-
-@dataclass
-class Config:
-    solar_panel_efficiency: float = 0.285
-    performance_ratio: float = 1
-    max_sun_constant: float = 1413.0
-    min_sun_constant: float = 1322.0
-    pixels_per_m2: float = 264921.8466012359
-    filepath: str = here('model/new_model.blend', as_str=True)
-    stations_url: str = 'http://celestrak.org/NORAD/elements/stations.txt'
-    output_file: str = here('results')
-
-
-config = Config()
 
 
 def generate_power(
@@ -38,7 +22,7 @@ def generate_power(
     sun_body = q_eci2body.conjugate.rotate(sun_eci)
     nadir_body = nadir_body / np.linalg.norm(nadir_body)
     q_body2sun = align_with_sun_and_nadir(sun_body, nadir_body)
-    cross_section = get_cross_section(q_body2sun, config.pixels_per_m2)
+    cross_section = get_cross_section(q_body2sun)
     return cross_section * sun_constant * config.solar_panel_efficiency * config.performance_ratio
 
 
@@ -101,7 +85,7 @@ def plot_data(
 def main():
     t_jd, seq_q_eci2body, _, powers, = parse.parse_data()
 
-    bpy.ops.wm.open_mainfile(filepath=config.filepath)
+    bpy.ops.wm.open_mainfile(filepath=config.paths.blender_model)
 
     bpy.data.objects["PeakSat v2"].rotation_mode = 'QUATERNION'
     bpy.context.scene.use_nodes = True
