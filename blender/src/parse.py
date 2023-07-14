@@ -15,8 +15,8 @@ def csvread(filename, remove_header=True):
 
 
 def parse_data():
-    rows = csvread('Satellite1 Attitude Quaternions.csv')
-    # Construct the times (as Julian dates) and quaternions tuples, ignoring incomplete or empty rows
+    rows = csvread('quaternion.csv')
+
     times = tuple(
         (Time(datetime.strptime(row[0], "%d %b %Y %H:%M:%S.%f"), scale='utc'))
         for row in rows
@@ -26,16 +26,10 @@ def parse_data():
         for row in rows
     )
 
-    rows = csvread('Satellite1 Solar Panel Area.csv')
+    rows = csvread('area.csv')
     areas = tuple(float(row[1]) for row in rows)
 
-    rows = csvread('Satellite1 Solar Panel Power.csv')
+    rows = csvread('power.csv')
     powers = tuple(float(row[1]) for row in rows)
 
-    # rows = csvread('position-velocity.csv')
-    # positions = tuple((float(row[1]), float(row[2]), float(row[3])) for row in rows)
-    # velocities = tuple((float(row[4]), float(row[5]), float(row[6])) for row in rows)
-    positions = tuple()
-    velocities = tuple()
-
-    return times, quaternions, areas, powers, positions, velocities
+    return times, quaternions, areas, powers
