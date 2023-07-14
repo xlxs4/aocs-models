@@ -19,7 +19,8 @@ def get_cross_section(quaternion, pixels_per_m2):
     bpy.data.images['Viewer Node'].pixels.foreach_get(pixels)
     pixels = pixels.reshape(
         bpy.context.scene.render.resolution_x,
-        bpy.context.scene.render.resolution_y, 4
+        bpy.context.scene.render.resolution_y,
+        4
     )
 
     pixels = np.dot(pixels[..., :3], [0.299, 0.587, 0.114])
