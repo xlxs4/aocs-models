@@ -2,11 +2,12 @@ import numpy as np
 
 from blender import get_cross_section
 from config import config
+from eltypes import Quaternion
 from utils import align_with_sun_and_nadir
 
 
 def generate_power(
-    q_eci2body: np.ndarray, nadir_body: np.ndarray,
+    q_eci2body: Quaternion, nadir_body: np.ndarray,
     sun_position_eci_km: np.ndarray, sun_constant: float
 ) -> float:
     sun_eci = sun_position_eci_km / np.linalg.norm(sun_position_eci_km)

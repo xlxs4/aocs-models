@@ -4,14 +4,11 @@ from typing import List
 
 import matplotlib.pyplot as plt
 import numpy as np
-from astropy.time import Time
-from pyquaternion import Quaternion
 from scipy.spatial.transform import Rotation as R
 from skyfield.api import load
-from skyfield.jpllib import SpiceKernel
-from skyfield.positionlib import ICRF
 
 from config import config
+from eltypes import ICRF, Quaternion, SpiceKernel, Time
 
 
 def align_with_sun_and_nadir(
@@ -37,7 +34,7 @@ def align_with_sun_and_nadir(
     return Quaternion([quat[3], quat[0], quat[1], quat[2]])
 
 
-def sun_constant(julian_date: float) -> float:
+def sun_constant(julian_date: np.float64) -> float:
     amplitude = (config.max_sun_constant - config.min_sun_constant) / 2.0
     mean_value = (config.max_sun_constant + config.min_sun_constant) / 2.0
 
@@ -48,7 +45,7 @@ def sun_constant(julian_date: float) -> float:
     return mean_value - amplitude * variation
 
 
-def time_sequence(t_jd) -> List:
+def time_sequence(t_jd: List[Time]) -> Time:
     return load.timescale().utc(
         t_jd[0].value.year, t_jd[0].value.month, t_jd[0].value.day,
         t_jd[0].value.hour, t_jd[0].value.minute, range(0,

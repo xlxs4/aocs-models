@@ -1,8 +1,8 @@
 import bpy
 import numpy as np
-from pyquaternion import Quaternion
 
 from config import config
+from eltypes import Quaternion
 
 
 def _rgb_to_grayscale(image: np.ndarray) -> np.ndarray:
