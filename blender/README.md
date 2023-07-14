@@ -51,9 +51,31 @@ For Python 3.10:
 Note that you need to have the project venv activated, that's what `poetry shell` does.
 This means that if you exit your (tty) session, you'll have to re-run `poetry shell`.
 
-To use the below you'll also need to install the dependencies in the `dev` group, by running `poetry install -E dev`
+To use `yapf` and `isort` you'll also need to install the dependencies in the `dev` group, by running `poetry install -E dev`
 
 We're using the [yapf](https://github.com/google/yapf) formatter.
 To format, if, e.g., you want to format all files in `src/`, go to `src/` and do `yapf -rpi --no-local-style --style "facebook" .`
 
 We're using [isort](https://pycqa.github.io/isort/) to categorize our module imports; just `isort .`
+
+To profile the code, a good starting point could be
+
+```python
+if __name__ == "__main__":
+    import cProfile
+    import pstats
+
+    profiler = cProfile.Profile()
+    profiler.enable()
+
+    main()
+
+    profiler.disable()
+    profiler.dump_stats('main_stats.prof')
+
+    stats = pstats.Stats('main_stats.prof')
+    stats.sort_stats('cumulative').print_stats() # instead of 'cumulative', you can use 'time', etc.
+```
+
+The biggest contributor to performance right now (masked by the `bpy.ops_call` call in profiling) is the rendering itself.
+The rendering parameter with the biggest impact in performance as it currently stands, is the [number of samples](https://docs.blender.org/manual/en/latest/render/eevee/render_settings/sampling.html) used by eevee.
