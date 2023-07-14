@@ -113,7 +113,7 @@ def main():
 
     seq_sun_position_eci = get_sun_position(eph, t)
 
-    satellites = load.tle_file(config.stations_url)
+    satellites = load.tle_file(config.paths.tle)
     by_name = {sat.name: sat for sat in satellites}
     satellite = by_name['ISS (ZARYA)']
     geocentric_position = satellite.at(t)
