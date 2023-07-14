@@ -1,5 +1,6 @@
 from collections import namedtuple
 from dataclasses import dataclass
+from typing import List
 
 from here import here
 
@@ -13,7 +14,7 @@ _Paths = namedtuple(
 
 @dataclass
 class _Config:
-    solar_panel_efficiency: float = 0.285
+    solar_panel_efficiency: float = 0.29
     performance_ratio: float = 1
     max_sun_constant: float = 1413.0
     min_sun_constant: float = 1322.0
@@ -27,6 +28,12 @@ class _Config:
         tle=here('stk/stations.txt', as_str=True)
     )
     blender_obj_name: str = 'PeakSat v2'
+    blender_res_x: int = 400
+    blender_res_y: int = 400
+    plot_title: str = 'Comparison of Power Sequences'
+    plot_xlabel: str = 'Time Step'
+    plot_ylabel: str = 'Power Value'
+    plot_legend_labels: List[str] = ('STK', 'Blender')
 
 
 config = _Config()

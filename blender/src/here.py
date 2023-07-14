@@ -28,7 +28,7 @@ def find_root(
     )
 
 
-def here(*paths: Union[str, Path], as_str: bool = False) -> Path:
+def here(*paths: Union[str, Path], as_str: bool = False) -> Union[str, Path]:
     root = find_root()
     res = root.joinpath(*paths).resolve()
     return str(res) if as_str else res

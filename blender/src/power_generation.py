@@ -75,8 +75,8 @@ def plot_data(
         y1 = list(itertools.accumulate(y1))
         y2 = list(itertools.accumulate(y2))
 
-    plt.plot(x, y1, label=legend_labels[0])
-    plt.plot(x, y2, label=legend_labels[1])
+    plt.scatter(x, y1, s=10, label=legend_labels[0])
+    plt.scatter(x, y2, s=10, label=legend_labels[1])
     plt.title(title)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
@@ -84,7 +84,7 @@ def plot_data(
     plt.show()
 
 
-def main():
+def main(should_plot: bool = False):
     t_jd, seq_q_eci2body, _, powers, = parse.parse_data()
 
     bpy.ops.wm.open_mainfile(filepath=config.paths.blender_model)
@@ -105,8 +105,8 @@ def main():
 
     links.new(rl.outputs[0], v.inputs[0])
 
-    bpy.context.scene.render.resolution_x = 400
-    bpy.context.scene.render.resolution_y = 400
+    bpy.context.scene.render.resolution_x = config.blender_res_x
+    bpy.context.scene.render.resolution_y = config.blender_res_y
 
     eph = load(config.paths.ephemeris)
     t = get_time_sequence(t_jd)
@@ -133,22 +133,18 @@ def main():
         )
     ]
 
-    x = range(len(powers))
-    title = 'Comparison of Power Sequences'
-    xlabel = 'Time Step'
-    ylabel = 'Power Value'
-    legend_labels = ['STK', 'Blender']
-    plot_data(
-        x,
-        powers,
-        seq_power,
-        title,
-        xlabel,
-        ylabel,
-        legend_labels,
-        accumulate=True
-    )
+    if should_plot:
+        plot_data(
+            range(len(powers)),
+            powers,
+            seq_power,
+            config.plot_title,
+            config.plot_xlabel,
+            config.plot_ylabel,
+            config.plot_legend_labels,
+            accumulate=True
+        )
 
 
 if __name__ == "__main__":
-    main()
+    main(should_plot=True)
