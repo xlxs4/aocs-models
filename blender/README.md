@@ -48,6 +48,9 @@ For Python 3.10:
 - `poetry shell`
 - `cp -r ~/blender-git/lib/darwin_arm64/python/lib/python3.10/site-packages/bpy .venv/lib/python3.10/site-packages/`
 
+Note that you need to have the project venv activated, that's what `poetry shell` does.
+This means that if you exit your (tty) session, you'll have to re-run `poetry shell`.
+
 To use the below you'll also need to install the dependencies in the `dev` group, by running `poetry install -E dev`
 
 We're using the [yapf](https://github.com/google/yapf) formatter.
