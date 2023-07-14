@@ -2,23 +2,25 @@ import numpy as np
 from pyquaternion import Quaternion
 from scipy.spatial.transform import Rotation as R
 
-def align_with_sun_and_nadir(v1, v2):
-    # Normalize the vectors
-    v1 = v1 / np.linalg.norm(v1)  # Sun vector
-    v2 = v2 / np.linalg.norm(v2)  # Nadir vector
+
+def align_with_sun_and_nadir(
+    sun_vector: np.ndarray, nadir_vector: np.ndarray
+) -> Quaternion:
+    sun_vector_norm, nadir_vector_norm = np.linalg.norm(
+        sun_vector
+    ), np.linalg.norm(nadir_vector)
+    sun_vector, nadir_vector = sun_vector / sun_vector_norm, nadir_vector / nadir_vector_norm
 
     # Calculate the satellite body frame
-    x_sat = -v1
-    y_sat = v2 - v1 * np.dot(v1, v2) # remove the component of v2 that is in the direction of v1
-    y_sat = y_sat / np.linalg.norm(y_sat) # normalize again after the subtraction
-    z_sat = np.cross(x_sat, y_sat); z_sat = z_sat / np.linalg.norm(z_sat) # z is now perpendicular to both x (v1) and y
+    x_sat = -sun_vector
+    y_sat = (
+        nadir_vector - sun_vector * np.dot(sun_vector, nadir_vector)
+    ) / sun_vector_norm  # remove the component of nadir_vector that is in the direction of sun_vector
+    z_sat = np.cross(x_sat, y_sat) / np.linalg.norm(
+        np.cross(x_sat, y_sat)
+    )  # z is now perpendicular to both x and y
 
-    # Form the rotation matrix
     rotation_matrix = np.vstack((x_sat, y_sat, z_sat))
-
-    # Convert the rotation matrix to a quaternion
-    rotation = R.from_matrix(rotation_matrix)
-
-    quat = rotation.as_quat()
+    quat = R.from_matrix(rotation_matrix).as_quat()
 
     return Quaternion([quat[3], quat[0], quat[1], quat[2]])

@@ -1,41 +1,51 @@
 import csv
-from pyquaternion import Quaternion
-from astropy.time import Time
 from datetime import datetime
+from pathlib import Path
+from typing import Any, Callable, Dict, List, Tuple
+
+from astropy.time import Time
+from pyquaternion import Quaternion
+
+from config import config
 
 
-def csvread(filename, remove_header=True):
-    # Open the CSV file and read all rows
+def parse_csv(
+    filename: Path,
+    data_type: Callable[[Dict[str, str]], Any],
+    remove_header: bool = True,
+    **kwargs: Any
+) -> List[Any]:
     with open(filename, 'r') as file:
-        reader = csv.reader(file)
-        rows = list(reader)
+        reader = csv.DictReader(file)
         if remove_header:
-            rows.pop(0)
-    return rows
+            next(reader)
+        return [data_type(row, **kwargs) for row in reader]
 
 
-def parse_data():
-    rows = csvread('Satellite1 Attitude Quaternions.csv')
-    # Construct the times (as Julian dates) and quaternions tuples, ignoring incomplete or empty rows
-    times = tuple(
-        (Time(datetime.strptime(row[0], "%d %b %Y %H:%M:%S.%f"), scale='utc'))
-        for row in rows
-    )
-    quaternions = tuple(
-        Quaternion(float(row[4]), float(row[1]), float(row[2]), float(row[3]))
-        for row in rows
+def _parse_quaternion(row: Dict[str, str]) -> Quaternion:
+    return Quaternion(
+        float(row['q4']), float(row['q1']), float(row['q2']), float(row['q3'])
     )
 
-    rows = csvread('Satellite1 Solar Panel Area.csv')
-    areas = tuple(float(row[1]) for row in rows)
 
-    rows = csvread('Satellite1 Solar Panel Power.csv')
-    powers = tuple(float(row[1]) for row in rows)
+def _parse_time(row: Dict[str, str]) -> Time:
+    return Time(
+        datetime.strptime(row['Time (UTCG)'], "%d %b %Y %H:%M:%S.%f"),
+        scale='utc'
+    )
 
-    # rows = csvread('position-velocity.csv')
-    # positions = tuple((float(row[1]), float(row[2]), float(row[3])) for row in rows)
-    # velocities = tuple((float(row[4]), float(row[5]), float(row[6])) for row in rows)
-    positions = tuple()
-    velocities = tuple()
 
-    return times, quaternions, areas, powers, positions, velocities
+def _parse_float(row: Dict[str, str], column: str) -> float:
+    return float(row[column])
+
+
+def parse_data(
+) -> Tuple[List[Time], List[Quaternion], List[float], List[float]]:
+    times = parse_csv(config.paths.stk_quaternion, _parse_time)
+    quaternions = parse_csv(config.paths.stk_quaternion, _parse_quaternion)
+    areas = parse_csv(
+        config.paths.stk_area, _parse_float, column='Effective Area (m^2)'
+    )
+    powers = parse_csv(config.paths.stk_power, _parse_float, column='Power (W)')
+
+    return times, quaternions, areas, powers

@@ -39,7 +39,6 @@ codegen/
 .DS_Store
 
 *.png
-*.bsp
 
 # ====================
 # PYTHON
