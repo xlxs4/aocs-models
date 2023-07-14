@@ -30,6 +30,7 @@ class _Config:
     blender_obj_name: str = 'PeakSat v2'
     blender_res_x: int = 400
     blender_res_y: int = 400
+    blender_white_threshold: float = 3.5
     plot_title: str = 'Comparison of Power Sequences'
     plot_xlabel: str = 'Time Step'
     plot_ylabel: str = 'Power Value'

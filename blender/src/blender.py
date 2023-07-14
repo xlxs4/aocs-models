@@ -29,6 +29,6 @@ def get_cross_section(quaternion: Quaternion) -> float:
     pixels = pixels.reshape(resolution_x, resolution_y, 4)
     pixels = _rgb_to_grayscale(pixels)
 
-    white_pixels = np.sum(pixels > 3.5)
+    white_pixels = np.sum(pixels > config.blender_white_threshold)
 
     return white_pixels / config.pixels_per_m2
