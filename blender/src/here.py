@@ -2,11 +2,11 @@ from pathlib import Path
 from typing import Union
 
 
-class SUSoftwareError(Exception):
-    """Base error class for SU Software"""
+class BlenderError(Exception):
+    """Base error class for Blender project"""
 
 
-class ProjectIndicatorNotFound(SUSoftwareError):
+class ProjectIndicatorNotFound(BlenderError):
     """The project indicator file (e.g. `.here`) was not found in this or any parent directory"""
 
 
