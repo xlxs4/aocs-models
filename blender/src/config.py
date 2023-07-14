@@ -4,7 +4,8 @@ from dataclasses import dataclass
 from here import here
 
 _Paths = namedtuple(
-    "Paths", ["blender_model", "stk_quaternion", "stk_area", "stk_power"]
+    "Paths",
+    ["blender_model", "stk_quaternion", "stk_area", "stk_power", "ephemeris"]
 )
 
 
@@ -20,7 +21,8 @@ class _Config:
         blender_model=here('model/new_model.blend', as_str=True),
         stk_quaternion=here('stk/quaternion.csv'),
         stk_area=here('stk/area.csv'),
-        stk_power=here('stk/power.csv')
+        stk_power=here('stk/power.csv'),
+        ephemeris=here('ephemeris/de421.bsp', as_str=True)
     )
     blender_obj_name: str = 'PeakSat v2'
 

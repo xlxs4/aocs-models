@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from astropy.time import Time
 from skyfield.api import load
+from skyfield.jpllib import SpiceKernel
 from skyfield.positionlib import ICRF
 
 import parse
@@ -47,8 +48,7 @@ def get_time_sequence(t_jd) -> List:
     )
 
 
-def get_sun_position(t: List) -> ICRF:
-    eph = load('de421.bsp')
+def get_sun_position(eph: SpiceKernel, t: List) -> ICRF:
     sun = eph['sun']
     earth = eph['earth']
 
@@ -108,9 +108,10 @@ def main():
     bpy.context.scene.render.resolution_x = 400
     bpy.context.scene.render.resolution_y = 400
 
+    eph = load(config.paths.ephemeris)
     t = get_time_sequence(t_jd)
 
-    seq_sun_position_eci = get_sun_position(t)
+    seq_sun_position_eci = get_sun_position(eph, t)
 
     satellites = load.tle_file(config.stations_url)
     by_name = {sat.name: sat for sat in satellites}
@@ -118,7 +119,7 @@ def main():
     geocentric_position = satellite.at(t)
     # 'up' vector is simply the negation of the position, as the vector from satellite to Earth's center
     seq_nadir_body = -geocentric_position.position.km.transpose()
-    sunlit = satellite.at(t).is_sunlit(load('de421.bsp'))
+    sunlit = satellite.at(t).is_sunlit(eph)
 
     seq_sun_constant = [get_sun_constant(time.tt) for time in t]
 
