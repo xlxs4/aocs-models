@@ -11,4 +11,4 @@ SpiceKernel = _SpiceKernel
 ICRF = _ICRF
 CSVRow = Dict[str, str]
 Data = Tuple[List[Time], List[Quaternion], List[float], List[float]]
-DatumParser = Callable[[Dict[str, str]], Any]
+DatumParser = Callable[[CSVRow], Any]
