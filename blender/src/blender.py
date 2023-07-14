@@ -5,30 +5,13 @@ from pyquaternion import Quaternion
 from config import config
 
 
-def _get_object(name: str) -> bpy.types.Object:
-    try:
-        return bpy.data.objects[name]
-    except KeyError:
-        raise ValueError(f"'{name}' object not found in the current scene.")
-
-
-def _get_image(name: str) -> bpy.types.Image:
-    try:
-        return bpy.data.images[name]
-    except KeyError:
-        raise ValueError(f"'{name}' image not found in the current scene.")
-
-
 def _rgb_to_grayscale(image: np.ndarray) -> np.ndarray:
     return np.dot(image[..., :3], [0.299, 0.587, 0.114])
 
 
 def get_cross_section(quaternion: Quaternion) -> float:
-    if config.pixels_per_m2 == 0:
-        raise ValueError("pixels_per_m2 cannot be zero.")
-
-    obj = _get_object("PeakSat v2")
-    image = _get_image('Viewer Node')
+    obj = bpy.data.objects[config.blender_obj_name]
+    image = bpy.data.images['Viewer Node']
 
     obj.rotation_quaternion = tuple(quaternion)
     bpy.ops.render.render(write_still=False)

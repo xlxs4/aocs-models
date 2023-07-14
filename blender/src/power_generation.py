@@ -89,7 +89,7 @@ def main():
 
     bpy.ops.wm.open_mainfile(filepath=config.paths.blender_model)
 
-    bpy.data.objects["PeakSat v2"].rotation_mode = 'QUATERNION'
+    bpy.data.objects[config.blender_obj_name].rotation_mode = 'QUATERNION'
     bpy.context.scene.use_nodes = True
     tree = bpy.context.scene.node_tree
     links = tree.links

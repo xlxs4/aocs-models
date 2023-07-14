@@ -22,6 +22,7 @@ class _Config:
         stk_area=here('stk/area.csv'),
         stk_power=here('stk/power.csv')
     )
+    blender_obj_name: str = 'PeakSat v2'
 
 
 config = _Config()
