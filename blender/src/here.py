@@ -10,7 +10,7 @@ class ProjectIndicatorNotFound(BlenderError):
     """The project indicator file (e.g. `.here`) was not found in this or any parent directory"""
 
 
-def find_root(
+def _find_root(
     path: Union[str, Path] = Path.cwd(), project_indicator: str = ".here"
 ) -> Path:
     path = Path(path).resolve()
@@ -29,6 +29,6 @@ def find_root(
 
 
 def here(*paths: Union[str, Path], as_str: bool = False) -> Union[str, Path]:
-    root = find_root()
+    root = _find_root()
     res = root.joinpath(*paths).resolve()
     return str(res) if as_str else res
