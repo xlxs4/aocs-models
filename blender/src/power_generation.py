@@ -1,16 +1,18 @@
+import itertools
 import math
 from typing import List
-from astropy.time import Time
+
 import bpy
+import matplotlib.pyplot as plt
 import numpy as np
+from astropy.time import Time
 from skyfield.api import load
 from skyfield.positionlib import ICRF
-from utils import align_with_sun_and_nadir
+
+import parse
 from blender import get_cross_section
 from config import config
-import parse
-import matplotlib.pyplot as plt
-import itertools
+from utils import align_with_sun_and_nadir
 
 
 def generate_power(

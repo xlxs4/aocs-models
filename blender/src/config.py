@@ -1,13 +1,12 @@
 from collections import namedtuple
 from dataclasses import dataclass
-from typing import Union
-from pathlib import Path
-from here import here
 
+from here import here
 
 _Paths = namedtuple(
     "Paths", ["blender_model", "stk_quaternion", "stk_area", "stk_power"]
 )
+
 
 @dataclass
 class _Config:
@@ -23,5 +22,6 @@ class _Config:
         stk_area=here('stk/area.csv'),
         stk_power=here('stk/power.csv')
     )
+
 
 config = _Config()

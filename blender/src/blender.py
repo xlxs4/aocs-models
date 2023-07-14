@@ -1,6 +1,7 @@
 import bpy
 import numpy as np
 from pyquaternion import Quaternion
+
 from config import config
 
 

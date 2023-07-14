@@ -1,10 +1,11 @@
 import csv
-from typing import Callable, Dict, List, Tuple, Any
-from pyquaternion import Quaternion
-from astropy.time import Time
 from datetime import datetime
 from pathlib import Path
-from here import here
+from typing import Any, Callable, Dict, List, Tuple
+
+from astropy.time import Time
+from pyquaternion import Quaternion
+
 from config import config
 
 
