@@ -2,7 +2,7 @@
 name = "blender"
 version = "0.1.0"
 description = "Calculate cross section area for SRP"
-authors = ["Your Name <you@example.com>"]
+authors = ["Orestis Ousoultzoglou <orousoultzoglou@gmail.com>", "Romanos Voulgarakis <voulgarakisromanos@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 
