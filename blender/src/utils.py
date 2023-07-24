@@ -87,3 +87,63 @@ def plot_data(
     plt.ylabel(ylabel)
     plt.legend()
     plt.show()
+
+import numpy as np
+
+def perifocal_to_cartesian(r_pf, v_pf, i, raan, argp):
+    # Convert angles to radians
+    i = np.radians(i)
+    raan = np.radians(raan)
+    argp = np.radians(argp)
+
+    # Rotation matrix
+    R = np.array([
+        [np.cos(raan) * np.cos(argp) - np.sin(raan) * np.sin(argp) * np.cos(i), 
+         -np.cos(raan) * np.sin(argp) - np.sin(raan) * np.cos(argp) * np.cos(i), 
+         np.sin(raan) * np.sin(i)],
+        [np.sin(raan) * np.cos(argp) + np.cos(raan) * np.sin(argp) * np.cos(i), 
+         -np.sin(raan) * np.sin(argp) + np.cos(raan) * np.cos(argp) * np.cos(i), 
+         -np.cos(raan) * np.sin(i)],
+        [np.sin(argp) * np.sin(i), 
+         np.cos(argp) * np.sin(i), 
+         np.cos(i)]
+    ])
+
+    # Perform the rotation
+    r_xyz = np.dot(R, r_pf)
+    v_xyz = np.dot(R, v_pf)
+
+    return r_xyz, v_xyz
+
+def calculate_mean_motion(semi_major_axis_km):
+    # Gravitational constant of Earth in km^3/s^2
+    mu = 398600.4418  
+
+    # Calculate the mean motion (rad/sec)
+    n_rad_per_sec = np.sqrt(mu / semi_major_axis_km**3)
+    
+    # Convert mean motion from rad/sec to rev/day
+    n_rev_per_day = n_rad_per_sec * (24*60*60) / (2*np.pi)
+
+    return n_rev_per_day
+
+def orbital_elements_to_tle(a, e, i, raan, argp, nu, epoch):
+    # Use astropy to create a state vector from Keplerian elements
+    mu = 398600.4418  # gravitational parameter of the Earth in km^3/s^2
+    n = calculate_mean_motion(a)
+    nu_rad = np.radians(nu)  # convert nu to radians
+    r = a * (1 - e**2) / (1 + e * np.cos(nu_rad))  # radius
+    v = np.sqrt(mu * (2./r - 1./a))  # velocity magnitude
+
+    # Compute position and velocity vectors in the perifocal frame
+    r_pf = np.array([r * np.cos(nu_rad), r * np.sin(nu_rad), 0])
+    v_pf = np.array([-v * np.sin(nu_rad), v * (e + np.cos(nu_rad)), 0])
+
+    # Convert to Cartesian coordinates in the ICRS frame
+    r_xyz, v_xyz = perifocal_to_cartesian(r_pf, v_pf, i, raan, argp)
+
+    # Now create the fake TLE with these vectors
+    line1 = f'1 00005U 58002B   {epoch.to_datetime().strftime("%y%j.%f")[2:]}  .00000023  00000-0  28098-4 0  4753'
+    line2 = f'2 00005  {i:.4f} {raan:.4f} {e:.7f} {argp:.4f} {nu:.4f} {n:.4f} 0'
+
+    return line1, line2

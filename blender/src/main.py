@@ -1,10 +1,11 @@
 import bpy
 from skyfield.api import load
-
+from skyfield.sgp4lib import EarthSatellite
+from eltypes import Time
 import parse
 from config import config
 from generation import generate_power
-from utils import plot_data, sun_constant, sun_position, time_sequence
+from utils import plot_data, sun_constant, sun_position, time_sequence, orbital_elements_to_tle
 
 
 def main(should_plot: bool = False):
@@ -36,9 +37,24 @@ def main(should_plot: bool = False):
 
     seq_sun_position_eci = sun_position(eph, t)
 
-    satellites = load.tle_file(config.paths.tle)
-    by_name = {sat.name: sat for sat in satellites}
-    satellite = by_name['ISS (ZARYA)']
+    # Orbital parameters
+    a = 6871  # Semi-major axis in km
+    e = 0.001  # Eccentricity
+    i = 51.65  # Inclination in degrees
+    raan = 0  # Right ascension of the ascending node in degrees
+    argp = 0  # Argument of perigee in degrees
+    nu = 0  # True anomaly in degrees
+    
+    epoch = Time(t[0].tt, format='jd')
+
+    # Get TLE lines
+    line1, line2 = orbital_elements_to_tle(a, e, i, raan, argp, nu, epoch)
+
+    # Create an EarthSatellite object
+    satellite = EarthSatellite(line1, line2, name='My Satellite')
+    # satellites = load.tle_file(config.paths.tle)
+    # by_name = {sat.name: sat for sat in satellites}
+    # satellite = by_name['ISS (ZARYA)']
     geocentric_position = satellite.at(t)
     # 'up' vector is simply the negation of the position, as the vector from satellite to Earth's center
     seq_nadir_body = -geocentric_position.position.km.transpose()
